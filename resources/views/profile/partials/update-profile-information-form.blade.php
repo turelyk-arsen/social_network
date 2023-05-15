@@ -47,7 +47,19 @@
             @endif
         </div>
 
-        <img src="{{asset('storage/'.$user->photo)  }}" alt="User Photo">
+        <div class="col-span-full">
+            <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
+            <div class="mt-2">
+              <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> {{ old('about', $user->about)}}</textarea>
+            </div>
+            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
+          </div>
+
+          <x-photo :user="$user"/>
+        {{-- <div class="relative p-5">
+            <div class="absolute z-10 w-1/2 h-full -mt-5 -ml-2 rounded-full rounded-tr-none bg-green-100"></div>
+            <img class="relative z-20 w-1/2 rounded-full" src="{{asset('storage/'.$user->photo)  }}">
+        </div> --}}
 
         <div class="mb-6">
             <label for="photo" class="inline-block text-lg mb-2">
