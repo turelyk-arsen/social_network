@@ -55,11 +55,11 @@
             <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
           </div>
 
-          <x-photo :user="$user"/>
-        {{-- <div class="relative p-5">
+          {{-- <x-photo :user="$user"/> --}}
+        <div class="relative p-5">
             <div class="absolute z-10 w-1/2 h-full -mt-5 -ml-2 rounded-full rounded-tr-none bg-green-100"></div>
-            <img class="relative z-20 w-1/2 rounded-full" src="{{asset('storage/'.$user->photo)  }}">
-        </div> --}}
+            <img class="relative z-20 w-1/2 rounded-full" src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/No_image_available.svg.png') }}">
+        </div>
 
         <div class="mb-6">
             <label for="photo" class="inline-block text-lg mb-2">
