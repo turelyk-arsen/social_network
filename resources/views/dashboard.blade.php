@@ -12,6 +12,7 @@ use App\Models\User;
 
 
     {{-- Pop up   "You're logged in!" --}}
+
     <div class="py-12" x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-emerald-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -49,6 +50,7 @@ use App\Models\User;
 
     {{-- Admin delete user --}}
     @if (Auth::user()->name == 'admin')
+
         <section class="py-20 bg-white tails-selected-element">
             <div class="container max-w-6xl mx-auto">
                 <h2 class="text-4xl font-bold tracking-tight text-center">List of all users</h2>
@@ -67,17 +69,20 @@ use App\Models\User;
                             </div>
                             <div class="hidden sm:flex sm:flex-col sm:items-end">
                                 <p class="text-sm leading-6 text-gray-900">Info about user : {{ $user->about }}</p>
-                                <p class="mt-1 text-xs leading-5 text-gray-500">User account created at {{ $user->created_at }}</p>
-                                <p class="mt-1 text-xs leading-5 text-gray-500">User account updated at {{ $user->updated_at }}</p>
+                                <p class="mt-1 text-xs leading-5 text-gray-500">User account created at
+                                    {{ $user->created_at }}</p>
+                                <p class="mt-1 text-xs leading-5 text-gray-500">User account updated at
+                                    {{ $user->updated_at }}</p>
                             </div>
 
                             <section class="space-y-6">
                                 <x-danger-button x-data=""
-                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">
+                                    x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion-{{ $user->id }}')">
                                     {{ __('Delete Account') }}</x-danger-button>
 
-                                <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-                                    <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+                                <x-modal :name="'confirm-user-deletion-' . $user->id" :show="$errors->userDeletion->isNotEmpty()" focusable>
+                                    <form method="post" action="{{ route('profile.deleteUser', $user->id) }}"
+                                        class="p-6">
                                         @csrf
                                         @method('delete')
 
