@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChuckNorrisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{userId}', [ProfileController::class, 'deleteUser'])->name('profile.deleteUser');
 
 });
+
+Route::get('/joke', [ChuckNorrisController::class, 'getRandomJoke']);
+
 
 require __DIR__.'/auth.php';
