@@ -3,6 +3,9 @@
 </svg> --}}
 <h2 class="text-4xl">LOGO</h2>
 
-<a class="underline text-sm px-8 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="/">
+{{-- <a class="underline text-sm px-8 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="/">
     Back
+</a> --}}
+<a class="'inline-flex items-center px-10 pt-1  dark:border-indigo-600 text-sm font-medium leading-5 text-gray-900 dark:text-gray-100 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'" href="/">
+    Home 
 </a>
