@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', [ChuckNorrisController::class, 'getRandomJoke'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -30,8 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{userId}', [ProfileController::class, 'deleteUser'])->name('profile.deleteUser');
 
 });
-
-Route::get('/joke', [ChuckNorrisController::class, 'getRandomJoke']);
-
 
 require __DIR__.'/auth.php';

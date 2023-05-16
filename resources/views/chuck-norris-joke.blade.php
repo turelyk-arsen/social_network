@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chuck Norris Joke</title>
-</head>
-<body>
-    <h1>Chuck Norris Joke:</h1>
-    <p>{{ $joke }}</p>
-</body>
-</html>
+@extends('dashboard')
+
+@section('joke')
+    <h1 class="text-base font-semibold leading-7 text-indigo-800">Chuck Norris Joke:</h1>
+    <h2 class="text-base font-semibold leading-7 text-indigo-600">{{ $joke }}</h2>
+@endsection

@@ -20,5 +20,6 @@ class ChuckNorrisController extends Controller
         $joke = json_decode($response->getBody(), true);
 
         return view('chuck-norris-joke', ['joke' => $joke['value']]);
+        // return $joke['value'];
     }
 }
