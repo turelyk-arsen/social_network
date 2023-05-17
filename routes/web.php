@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ListingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,4 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+//all posts page
+Route::get('/posts', [ListingController::class, 'index'])->name('posts');
+
+
+require __DIR__ . '/auth.php';
