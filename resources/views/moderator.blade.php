@@ -25,7 +25,7 @@
 
 
     {{-- list of post ---- user --}}
-    <section class="py-20 bg-white tails-selected-element bg-[url('/images/16150556.jpg')] bg-cover">
+    {{-- <section class="py-20 bg-white tails-selected-element bg-[url('/images/16150556.jpg')] bg-cover">
         <div class="container max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold tracking-tight text-center">My posts</h2>
             <p class="mt-2 text-lg text-center text-gray-600">Check out my list of awesome posts below.</p>
@@ -43,8 +43,63 @@
                 </div>
             @endforeach
         </div>
-    </section>
+    </section> --}}
 
+    <div class="bg-slate-50 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the newest posts</h2>
+                <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
+                </p>
+            </div>
+
+            @foreach ($posts as $post)
+                <div
+                    class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <article class="flex max-w-xl flex-col items-start justify-between">
+                        <div class="flex items-center gap-x-4 text-xs">
+                            <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at }}</time>
+                            <a href="#"
+                                class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $post->subtitle }}</a>
+                        </div>
+                        <div class="group relative">
+                            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                                <a href="#">
+                                    <span class="absolute inset-0"></span>
+                                    {{ $post->title }}
+                                </a>
+                            </h3>
+
+                            @php
+                                $tags = explode(', ', $post->tags);
+                            @endphp
+                            @foreach ($tags as $tag)
+                                <a href="/?tag={{ $tag }}">{{ $tag }}</a>
+                            @endforeach
+                            <img src="{{ asset($post->image) }}" alt=""
+                            class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
+                            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
+                        </div>
+
+                        <div class="relative mt-8 flex items-center gap-x-4">
+                            <img 
+                            src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}"
+                                class="h-10 w-10 rounded-full bg-gray-50">
+                            <div class="text-sm leading-6">
+                                <p class="font-semibold text-gray-900">
+                                    <a href="#">
+                                        <span class="absolute inset-0"></span>
+                                        {{ $post->user->name }}
+                                    </a>
+                                </p>
+                                <p class="text-gray-600">{{ $post->user->role }}</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            @endforeach
+        </div>
+    </div>
     {{-- list of friend --- user --}}
     {{-- <section class="relative py-20 overflow-hidden bg-white">
 
