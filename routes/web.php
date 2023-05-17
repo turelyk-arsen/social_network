@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [PostController::class, 'home']);
+
 Route::get('/dashboard', [ChuckNorrisController::class, 'getRandomJoke'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -33,5 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{userId}', [ProfileController::class, 'deleteUser'])->name('profile.deleteUser');
 
 });
+
+// Route::get('/dashboard', [PostController::class, 'userPost']);
+
+// Route::delete('/moderator/{post}', [PostController::class, 'destroy']);
+Route::delete('/moderator/{postId}', [PostController::class, 'destroy'])->name('moderator.destroy');
+
 
 require __DIR__.'/auth.php';
