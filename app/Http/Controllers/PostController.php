@@ -78,5 +78,10 @@ public function userPost()
         return redirect('/moderator')->with('error', 'Post not found');
     }
 }
-    
+public function show(Post $post)
+{
+    return view('post', [
+        'post' => $post
+    ]);
+}
 }

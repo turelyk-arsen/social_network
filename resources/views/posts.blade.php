@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2> 
-               <x-search/>
+        <x-search/>
 
     </x-slot>
 
@@ -13,6 +13,10 @@
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All posts</h2>
                 <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
                 </p>
+
+                <div class="-mt-10 flex justify-end gap-x-6">
+                    <button type="submit" class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add POST</button>
+                  </div>
             </div>
 
             <div
@@ -21,12 +25,12 @@
                     <article class="flex max-w-xl flex-col items-start justify-between">
                         <div class="flex items-center gap-x-4 text-xs">
                             <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at }}</time>
-                            <a href="#"
+                            <a href="/posts/{{ $post->id }}"
                                 class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $post->subtitle }}</a>
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                <a href="#">
+                                <a href="/posts/{{ $post->id }}">
                                     <span class="absolute inset-0"></span>
                                     {{ $post->title }}
                                 </a>
@@ -41,9 +45,10 @@
                                     <a href="/?tag={{ $tag }}">{{ $tag }}</a>
                                 </li>
                             @endforeach
+                            <a href="/posts/{{ $post->id }}">
                             <img src="{{ asset($post->image) }}" alt=""
                                 class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
-                            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
+                            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p></a>
                         </div>
 
                         <div class="relative mt-8 flex items-center gap-x-4">
@@ -51,7 +56,7 @@
                                 class="h-10 w-10 rounded-full bg-gray-50">
                             <div class="text-sm leading-6">
                                 <p class="font-semibold text-gray-900">
-                                    <a href="#">
+                                    <a href="/posts/{{ $post->id }}">
                                         <span class="absolute inset-0"></span>
                                         {{ $post->user->name }}
                                     </a>

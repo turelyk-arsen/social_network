@@ -34,7 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/{userId}', [ProfileController::class, 'deleteUser'])->name('profile.deleteUser');
-
 });
 
 // Route::get('/dashboard', [PostController::class, 'userPost']);
@@ -42,5 +41,6 @@ Route::middleware('auth')->group(function () {
 // Route::delete('/moderator/{post}', [PostController::class, 'destroy']);
 Route::delete('/moderator/{postId}', [PostController::class, 'destroy'])->name('moderator.destroy');
 
-
-require __DIR__.'/auth.php';
+Route::get('/posts/{post}', [PostController::class, 'show']);
+    
+require __DIR__ . '/auth.php';
