@@ -18,6 +18,14 @@ class PostController extends Controller
         return view('moderator', compact('posts'));
     }
 
+    public function indexAll()
+    {
+        // $posts = Post::all();
+        $posts = Post::with('user')->get();
+
+        return view('posts', compact('posts'));
+    }
+
     public function home()
     {
         $posts = Post::with('user')->latest()->take(3)->get();

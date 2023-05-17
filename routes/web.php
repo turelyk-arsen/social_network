@@ -27,6 +27,7 @@ Route::get('/dashboard', [ChuckNorrisController::class, 'getRandomJoke'], functi
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/moderator', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('moderator');
+Route::get('/posts', [PostController::class, 'indexAll'])->middleware(['auth', 'verified'])->name('posts');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
