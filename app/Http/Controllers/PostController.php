@@ -23,7 +23,16 @@ class PostController extends Controller
         // $posts = Post::all();
         $posts = Post::with('user')->get();
 
-        return view('posts', compact('posts'));
+        // return view('posts', compact('posts'));
+
+        return view('posts', [
+            // 'listings' => Listing::latest()->filter(request(['tag']))->get(),
+            // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->get(),
+            // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4),
+            // 'posts' => Post::latest()->filter(request(['tag', 'search']))->simplePaginate(4),
+            'posts' => Post::latest()->simplePaginate(6),
+
+        ]);
     }
 
     public function home()

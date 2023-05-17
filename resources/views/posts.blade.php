@@ -2,7 +2,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
-        </h2>
+        </h2> 
+               <x-search/>
+
     </x-slot>
 
     <div class="bg-slate-50 py-24 sm:py-32">
@@ -63,5 +65,7 @@
             </div>
         </div>
     </div>
-
+    <div class="mt-6 p-4">
+        {{$posts->links()}}
+    </div>
 </x-app-layout>
