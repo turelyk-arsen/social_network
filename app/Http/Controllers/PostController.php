@@ -84,4 +84,18 @@ public function show(Post $post)
         'post' => $post
     ]);
 }
+public function create () {
+    return view('create');
+}
+
+public function store (Request $request) {
+    $form = $request->validate([
+       'title' => 'required', 
+       'subtitle' => 'required', 
+       'tags' => 'required', 
+       'content' => 'required', 
+    ]);
+    Post::create($form);
+    return redirect('/posts');
+}
 }

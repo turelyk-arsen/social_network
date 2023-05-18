@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Post') }}
         </h2>
         <x-search />
 
@@ -22,19 +22,16 @@
             </div>
 
             <div
-                class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none md:grid-cols-1 lg:grid-cols-1">
-                <article class="flex max-w-xl flex-col items-start justify-between">
-                    <div class="flex items-center gap-x-4 text-xs">
+                class="mx-auto  mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none md:grid-cols-1 lg:grid-cols-1">
+                <article class="flex max-w-full flex-col items-start justify-between">
+                    <div class="flex align-center gap-x-4 text-xs">
                         <time datetime="2020-03-16" class="text-gray-500">{{ $post->created_at }}</time>
                         <a href="/posts/{{ $post->id }}"
                             class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $post->subtitle }}</a>
                     </div>
                     <div class="group relative">
-                        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                            <a href="/posts/{{ $post->id }}">
-                                <span class="absolute inset-0"></span>
-                                {{ $post->title }}
-                            </a>
+                        <h3 class="mt-3 text-3xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                            {{ $post->title }}
                         </h3>
 
                         @php
@@ -46,28 +43,28 @@
                                 <a href="/?tag={{ $tag }}">{{ $tag }}</a>
                             </li>
                         @endforeach
-                        <a href="/posts/{{ $post->id }}">
-                            <img src="{{ asset($post->image) }}" alt=""
-                                class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
-                            <p class="mt-5 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
-                        </a>
-                    </div>
 
-                    <div class="relative mt-8 flex items-center gap-x-4">
-                        <img src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}"
-                            class="h-10 w-10 rounded-full bg-gray-50">
-                        <div class="text-sm leading-6">
-                            <p class="font-semibold text-gray-900">
-                                <a href="/posts/{{ $post->id }}">
-                                    <span class="absolute inset-0"></span>
-                                    {{ $post->user->name }}
-                                </a>
-                            </p>
-                            <p class="text-gray-600">{{ $post->user->role }} </p>
+                        <div class="relative mb-8 flex items-center gap-x-4">
+                            <img src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}"
+                                class="h-10 w-10 rounded-full bg-gray-50">
+                            <div class="text-sm leading-6">
+                                <p class="font-semibold text-gray-900">
+                                    <a href="/posts/{{ $post->id }}">
+                                        <span class="absolute inset-0"></span>
+                                        {{ $post->user->name }}
+                                    </a>
+                                </p>
+                                <p class="text-gray-600">{{ $post->user->role }} </p>
+                            </div>
                         </div>
+
+                        <img src="{{ asset($post->image) }}" alt=""
+                            class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
+                        <p class="mt-5 text-xl leading-6 text-gray-800">{{ $post->content }}</p>
                     </div>
                 </article>
             </div>
         </div>
     </div>
+
 </x-app-layout>

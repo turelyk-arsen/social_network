@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('tags');
             $table->text('content');
-            $table->string('image');
-            $table->unsignedBigInteger('user_id');
+            $table->string('image')->default('/images/No_image_available.svg.png');
+            $table->unsignedBigInteger('user_id')->default('1');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
