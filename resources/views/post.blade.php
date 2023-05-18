@@ -9,16 +9,25 @@
 
     <div class="bg-slate-50 py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All posts</h2>
+            <div class="mx-auto max-w-4xl lg:mx-0">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">One post</h2>
                 <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
                 </p>
 
+                @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
                 <div class="-mt-10 flex justify-end gap-x-6">
-                    <button type="submit"
-                        class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
-                        POST</button>
+                    <form action="/posts/{{ $post->id }}/edit" method="get">
+                        <button type="submit"
+                            class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
+                            POST</button>
+                    </form>
+                    <form action="/posts/{{ $post->id }}/delete" method="get">
+                        <button type="submit"
+                            class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                            POST</button>
+                    </form>
                 </div>
+               @endif
             </div>
 
             <div
@@ -58,7 +67,7 @@
                             </div>
                         </div>
 
-                        <img src="{{ asset($post->image) }}" alt=""
+                        <img src="{{ asset('storage/' . $post->image) }}" alt=""
                             class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
                         <p class="mt-5 text-xl leading-6 text-gray-800">{{ $post->content }}</p>
                     </div>

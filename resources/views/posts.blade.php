@@ -47,7 +47,7 @@
                                 </li>
                             @endforeach
                             <a href="/posts/{{ $post->id }}">
-                            <img src="{{ asset($post->image) }}" alt=""
+                            <img src="{{ asset('storage/'.$post->image) }}" alt=""
                                 class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
                             <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p></a>
                         </div>

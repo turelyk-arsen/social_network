@@ -27,7 +27,7 @@ class PostsTableSeeder extends Seeder
                 In the digital age, collaboration has become an essential skill for success. The ability to work effectively in teams, whether virtual or physical, is highly valued in today's workplace. Employers seek individuals who can navigate complex social dynamics, communicate effectively, and build relationships that foster collaboration. By cultivating collaboration skills, we not only enhance our own career prospects but also contribute to a more collaborative and interconnected society.
                 
                 Together, we can pave the way for a brighter future, where ideas flow freely and transformative solutions emerge. Let us embrace the power of collaboration in the digital age and leverage the collective wisdom of connected minds to drive innovation, solve challenges, and create a positive impact on the world.",
-                'image' => '/images/11.jpg',
+                'image' => 'photos/11.jpg',
                 'user_id' => '1',
             ],
             [
@@ -45,7 +45,7 @@ class PostsTableSeeder extends Seeder
                 As we navigate this era of AI-driven transformation, it is crucial to foster interdisciplinary collaboration. Bringing together experts from various fields such as computer science, ethics, psychology, and social sciences can help us address the multifaceted challenges and opportunities posed by AI. By working together, we can shape AI technologies that are not only powerful but also aligned with our collective values and aspirations.
                 
                 Embracing the AI revolution, we have the opportunity to shape a future where humans and machines collaborate harmoniously, where AI augments our capabilities and enhances our well-being. Let us seize this opportunity with responsibility, foresight, and a commitment to harnessing the power of AI for the benefit of all.",
-                'image' => '/images/12.jpg',
+                'image' => 'photos/12.jpg',
                 'user_id' => '2',
             ],
             [
@@ -63,7 +63,7 @@ class PostsTableSeeder extends Seeder
                 To nurture thriving digital communities, it is essential to cultivate a culture of respect, authenticity, and active engagement. This involves treating others with kindness, listening attentively, and valuing diverse perspectives. It also means being authentic in our interactions, sharing our experiences and insights genuinely. By actively participating, contributing, and collaborating within these communities, we can collectively enrich the experiences of all members.
                 
                 As digital citizens, let us recognize the potential of digital communities to foster meaningful connections and positive change. By nurturing empathy, support, and authentic engagement, we can create vibrant digital spaces that empower individuals, inspire collaboration, and extend the boundaries of our social lives beyond screens.",
-                'image' => '/images/6.jpg',
+                'image' => 'photos/6.jpg',
                 'user_id' => '3',
             ],
             [
@@ -83,7 +83,7 @@ class PostsTableSeeder extends Seeder
                 The field of cybersecurity is ever-evolving, as cybercriminals continuously adapt their tactics. It requires a commitment to lifelong learning, staying updated on the latest threats, technologies, and countermeasures. Investing in research and development, supporting cybersecurity education, and promoting ethical hacking initiatives are essential in building a robust defense against cyber threats.
                 
                 In our digital age, where our lives are intricately intertwined with technology, cybersecurity plays a pivotal role in protecting our digital identities and ensuring the integrity and privacy of our personal information. By collectively prioritizing and investing in cybersecurity measures, we can create a safer digital landscape that allows us to harness the full potential of technology while mitigating the associated risks.",
-                'image' => '/images/7.jpg',
+                'image' => 'photos/7.jpg',
                 'user_id' => '4',
             ],
             [
@@ -101,7 +101,7 @@ class PostsTableSeeder extends Seeder
                 As we embrace blockchain technology, it is essential to prioritize privacy, security, and ethical considerations. Blockchain systems must be designed to protect sensitive data, uphold privacy rights, and mitigate the risks of malicious activities. By promoting responsible blockchain implementation and adhering to established standards, we can build trust in the technology and unlock its full potential for positive societal impact.
                 
                 Blockchain technology has the potential to reshape the way we establish trust, conduct business, and interact in our increasingly digital world. By embracing this transformative technology, we can create a future that is built on transparency, accountability, and shared trust.",
-                'image' => '/images/8.jpg',
+                'image' => 'photos/8.jpg',
                 'user_id' => '5',
             ],
             [
@@ -121,7 +121,7 @@ class PostsTableSeeder extends Seeder
                 By proactively addressing the ethical implications of big data, we can harness its transformative potential for positive impact. Industry standards, regulatory frameworks, and public discourse are essential components of the ethical governance of big data. Collaboration between stakeholders, including data scientists, policymakers, and ethicists, is crucial to navigate the complex landscape and ensure responsible data practices.
                 
                 As we navigate the era of big data, let us recognize the ethical dimensions and strive to harness insights in ways that empower individuals, promote social good, and foster a fair and inclusive society.",
-                'image' => '/images/9.jpg',
+                'image' => 'photos/9.jpg',
                 'user_id' => '6',
             ],
             [
@@ -139,7 +139,7 @@ class PostsTableSeeder extends Seeder
                 As users, we can also play an active role in nurturing authenticity on social media. By engaging with others respectfully, promoting positive interactions, and challenging harmful behaviors, we contribute to a healthier digital ecosystem. It is important to approach social media with mindfulness, being conscious of the impact our words and actions can have on others.
                 
                 Let us reimagine social media as a space where authentic connections thrive, where we celebrate diverse voices and perspectives, and where empathy and understanding prevail. By embracing authenticity and nurturing genuine human connections, we can unlock the true potential of social media as a tool for positive change and collective growth.",
-                'image' => '/images/10.jpg',
+                'image' => 'photos/10.jpg',
                 'user_id' => '7',
             ],
             [
@@ -159,7 +159,7 @@ class PostsTableSeeder extends Seeder
                 As AI continues to advance, collaboration between stakeholders is essential to ensure responsible use and protect individuals' rights. This includes collaboration between technology companies, policymakers, and privacy advocates to establish guidelines and standards that promote ethical AI practices.
                 
                 By embracing the power of AI for personalized experiences while upholding privacy principles, we can create digital ecosystems that are efficient, inclusive, and respectful of individuals' autonomy. Together, let us navigate the complexities and challenges, harnessing the potential of AI for the benefit of all.",
-                'image' => '/images/11.jpg',
+                'image' => 'photos/6.jpg',
                 'user_id' => '5',
             ],
             [
@@ -179,7 +179,7 @@ class PostsTableSeeder extends Seeder
                 As remote work continues to gain momentum, it is crucial to address its long-term implications. Policymakers, employers, and employees must collaborate to shape regulations, policies, and practices that protect workers' rights, promote fair compensation, and ensure equal opportunities for all, regardless of their location.
                 
                 Remote work represents a paradigm shift in how we perceive and approach work. By embracing flexibility, redefining productivity, and nurturing a supportive and inclusive work culture, we can unlock the full potential of remote work and create a future where individuals can thrive professionally while maintaining a fulfilling personal life.",
-                'image' => '/images/11.jpg',
+                'image' => 'photos/12.jpg',
                 'user_id' => '6',
             ],
             [
@@ -201,7 +201,7 @@ class PostsTableSeeder extends Seeder
                 As we embrace the power of online learning, it is important to recognize its potential in addressing educational inequalities, upskilling the workforce, and fostering lifelong learning. Governments, educational institutions, and technology providers must collaborate to invest in infrastructure, develop inclusive policies, and empower educators with the necessary skills to leverage online learning effectively.
                 
                 Online learning has the power to transform lives, empower individuals, and shape a more educated and inclusive society. By harnessing this transformative tool, we can unlock the full potential of human potential and create a future where education knows no boundaries.",
-                'image' => '/images/11.jpg',
+                'image' => 'photos/10.jpg',
                 'user_id' => '7',
             ],
         ];

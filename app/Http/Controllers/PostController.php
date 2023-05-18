@@ -100,8 +100,34 @@ class PostController extends Controller
 
         $form['user_id'] = Auth::id();
 
+        if($request->hasFile('image')) {
+            $form['image'] = $request->file('image')->store('photos', 'public');
+        }
+
         Post::create($form);
         // Post::create($request->all());
         return redirect('/posts')->with('message', 'Your post created successfully.');
+    }
+
+    public function edit(Post $post) {
+        return view('post-edit', ['post'=>$post]);
+    }
+
+    public function update(Request $request, Post $post) {
+        $form = $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'tags' => 'required',
+            'content' => 'required',
+        ]);
+
+        $form['user_id'] = Auth::id();
+
+        if($request->hasFile('image')) {
+            $form['image'] = $request->file('image')->store('photos', 'public');
+        }
+
+        $post->update($form);
+        return redirect('/posts')->with('message', 'Your post update successfully.');
     }
 }

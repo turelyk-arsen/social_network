@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('tags');
             $table->text('content');
-            $table->string('image')->default('/images/No_image_available.svg.png');
+            $table->string('image')->default('photos/No_image_available.svg.png');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

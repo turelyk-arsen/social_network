@@ -1,14 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Add post') }}
+            {{ __('Edit post :  '. $post->title ) }}
         </h2>
     </x-slot>
 
 
     <section class="relative py-20 overflow-hidden bg-white p-10 max-w-4xl mx-auto mt-10">
-        <form method="POST" action="/posts" enctype="multipart/form-data">
+        <form method="POST" action="/posts/{{ $post->id }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
@@ -24,7 +25,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="title" id="title" autocomplete="title"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  title" value="{{ old('title') }}">
+                                         value="{{ $post->title }}">
 
                                 </div>
                                 @error('title')
@@ -41,7 +42,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="subtitle" id="subtitle" autocomplete="subtitle"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  subtitle" value="{{ old('subtitle') }}">
+                                        placeholder="  subtitle" value="{{ $post->subtitle }}">
                                 </div>
                                 @error('subtitle')
                                     <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
@@ -56,7 +57,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="tags" id="tags" autocomplete="tags"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  tag, tag, tag ..." value="{{ old('tags') }}">
+                                        placeholder="  tag, tag, tag ..." value="{{ $post->tags }}">
                                 </div>
                                 @error('tags')
                                     <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
@@ -67,8 +68,8 @@
                         <div class="col-span-full">
                             <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Post</label>
                             <div class="mt-2">
-                                <textarea id="content" name="content" rows="3"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('content') }}</textarea>
+                                <textarea id="content" name="content" rows="10"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $post->content }}</textarea>
                             </div>
                             @error('content')
                                 <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
@@ -95,6 +96,8 @@
                         </div> --}}
 
                         <div class="col-span-full">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt=""
+                                    class="list-image-none rounded-lg mb-2 shadow-lg shadow-gray-900/50 object-cover object-center">
                             <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Add
                                 photo</label>
                             <div
@@ -113,10 +116,12 @@
                                             <input id="image" name="image" type="file" class="sr-only">
                                         </label>
                                     </div>
+                                    
                                     @error('image')
                                     <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
                                 @enderror
                                 </div>
+                                
                             </div>
                         </div> 
 
@@ -136,7 +141,7 @@
                     <button type="button" class="text-sm font-semibold leading-6 text-gray-900"><a href="/posts"
                             class="text-black ml-4"> Cancel</a></button>
                     <button type="submit"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
                 </div>
         </form>
     </section>

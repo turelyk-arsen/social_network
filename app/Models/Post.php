@@ -14,7 +14,7 @@ class Post extends Model
         'subtitle',
         'tags',
         'content',
-        // 'image',
+        'image',
         'user_id',
     ];
 
