@@ -20,18 +20,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [PostController::class, 'home']);
+
 Route::get('/dashboard', [ChuckNorrisController::class, 'getRandomJoke'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/moderator', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('moderator');
+Route::get('/posts', [PostController::class, 'indexAll'])->middleware(['auth', 'verified'])->name('posts');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/{userId}', [ProfileController::class, 'deleteUser'])->name('profile.deleteUser');
-
 });
 
-require __DIR__.'/auth.php';
+// Route::get('/dashboard', [PostController::class, 'userPost']);
+
+
+Route::get('/posts/create', [PostController::class, 'create']);
+Route::post('/posts', [PostController::class, 'store']);
+
+Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
+Route::put('/posts/{post}', [PostController::class, 'update']);
+Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+Route::delete('/moderator/{post}/delete', [PostController::class, 'dest']);
+
+    
+require __DIR__ . '/auth.php';

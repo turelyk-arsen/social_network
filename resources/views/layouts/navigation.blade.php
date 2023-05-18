@@ -35,6 +35,9 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     @endif
+                    <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
+                        {{ __('Posts') }}
+                    </x-dropdown-link>
                     <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Edit profile') }}
                     </x-dropdown-link>
