@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();
-        $posts = Post::with('user')->get();
+        $posts = Post::with('user')->latest()->get();
 
         return view('moderator', compact('posts'));
     }
@@ -30,7 +30,8 @@ class PostController extends Controller
             // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->get(),
             // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4),
             // 'posts' => Post::latest()->filter(request(['tag', 'search']))->simplePaginate(4),
-            'posts' => Post::latest()->simplePaginate(6),
+            // 'posts' => Post::latest()->filter(request(['tag']))->get()->simplePaginate(6),
+            'posts' => Post::latest()->filter(request(['tag', 'search']))->simplePaginate(6),
 
         ]);
     }
@@ -68,16 +69,17 @@ class PostController extends Controller
     //     return redirect('/')->with('messege', 'Listing deleted successfully');
     // }
 
-    public function destroy($postId)
-    {
-        $post = Post::find($postId);
-        if ($post) {
-            $post->delete();
-            return redirect('/moderator')->with('message', 'Post deleted successfully');
-        } else {
-            return redirect('/moderator')->with('error', 'Post not found');
-        }
-    }
+    // public function destroy($postId)
+    // {
+    //     $post = Post::find($postId);
+    //     if ($post) {
+    //         $post->delete();
+    //         return redirect('/moderator')->with('message', 'Post deleted successfully');
+    //     } else {
+    //         return redirect('/moderator')->with('error', 'Post not found');
+    //     }
+    // }
+    
     public function show(Post $post)
     {
         return view('post', [
@@ -129,5 +131,15 @@ class PostController extends Controller
 
         $post->update($form);
         return redirect('/posts')->with('message', 'Your post update successfully.');
+    }
+    
+    public function destroy (Post $post) {
+        $post->delete();
+        return redirect('/posts')->with('message','Your post delete successfully');
+    }
+
+    public function dest (Post $post) {
+        $post->delete();
+        return redirect('/')->with('message','Your post delete successfully');
     }
 }

@@ -38,16 +38,16 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/dashboard', [PostController::class, 'userPost']);
 
-// Route::delete('/moderator/{post}', [PostController::class, 'destroy']);
-Route::delete('/moderator/{postId}', [PostController::class, 'destroy'])->name('moderator.destroy');
 
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
 Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+Route::delete('/moderator/{post}/delete', [PostController::class, 'dest']);
 
     
 require __DIR__ . '/auth.php';

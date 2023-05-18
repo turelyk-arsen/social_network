@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Post') }}
         </h2>
-        <x-search />
+        {{-- <x-search /> --}}
 
     </x-slot>
 
@@ -16,12 +16,16 @@
 
                 @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
                 <div class="-mt-10 flex justify-end gap-x-6">
+                    @csrf
                     <form action="/posts/{{ $post->id }}/edit" method="get">
                         <button type="submit"
                             class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
                             POST</button>
                     </form>
-                    <form action="/posts/{{ $post->id }}/delete" method="get">
+                    <form action="/posts/{{ $post->id }}/delete" method="post">
+                        @csrf
+                        @method('DELETE')
+
                         <button type="submit"
                             class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
                             POST</button>

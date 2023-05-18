@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-
+     <x-flash/>
     {{-- User profile --}}
     <x-user-profile />
 
@@ -65,10 +65,10 @@
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                <a href="#">
+                               
                                     <span class="absolute inset-0"></span>
                                     {{ $post->title }}
-                                </a>
+                                
                             </h3>
 
                             @php
@@ -80,7 +80,7 @@
                                     <a href="/?tag={{ $tag }}">{{ $tag }}</a>
                                 </li>
                             @endforeach
-                            <img src="{{ asset($post->image) }}" alt=""
+                            <img src="{{ asset('storage/'.$post->image) }}" alt=""
                                 class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
                             <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
                         </div>
@@ -90,19 +90,29 @@
                                 class="h-10 w-10 rounded-full bg-gray-50">
                             <div class="text-sm leading-6">
                                 <p class="font-semibold text-gray-900">
-                                    <a href="#">
                                         <span class="absolute inset-0"></span>
                                         {{ $post->user->name }}
-                                    </a>
                                 </p>
                                 <p class="text-gray-600">{{ $post->user->role }} </p>
                             </div>
 
-                            <form action="/moderator/{{ $post->id }}" method="post">
+                            {{-- <form action="/moderator/{{ $post->id }}/delete" method="post">
                                 @csrf
                                 @method('DELETE')
-                                 <x-danger-button>{{ __('Delete post') }}</x-danger-button>
-                            </form>
+                                <button type="submit"
+                                class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                                POST</button>
+                            </form> --}}
+                           {{-- <x-danger-button>{{ __('Delete post '.$post->id) }}</x-danger-button> --}}
+
+                            {{-- <form action="/posts/{{ $post->id }}/delete" method="post">
+                                @csrf
+                                @method('DELETE')
+        
+                                <button type="submit"
+                                    class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                                    POST</button>
+                            </form> --}}
                         </div>
                     </article>
                 @endforeach
