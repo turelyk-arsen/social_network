@@ -25,8 +25,8 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="title" id="title" autocomplete="title"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  title">
-                                    {{-- value="{{ old('title') }} --}}
+                                        placeholder="  title" value="{{ old('title') }}">
+                                    
                                 </div>
                                  @error('title')
                                     <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
@@ -42,7 +42,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="subtitle" id="subtitle" autocomplete="subtitle"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  subtitle">
+                                        placeholder="  subtitle" value="{{ old('subtitle') }}">
                                 </div>
                                 @error('subtitle')
                                 <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
@@ -57,7 +57,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="tags" id="tags" autocomplete="tags"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                        placeholder="  tag, tag, tag ...">
+                                        placeholder="  tag, tag, tag ..." value="{{ old('tags') }}">
                                 </div>
                                 @error('tags')
                                 <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
@@ -69,10 +69,10 @@
                             <label for="content" class="block text-sm font-medium leading-6 text-gray-900">Post</label>
                             <div class="mt-2">
                                 <textarea id="content" name="content" rows="3"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('content') }}</textarea>
                             </div>
                             @error('content')
-                            <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
                         @enderror
                             <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences your post.</p>
                         </div>

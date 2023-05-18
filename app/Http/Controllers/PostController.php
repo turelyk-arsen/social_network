@@ -43,24 +43,24 @@ class PostController extends Controller
 
     // public function userPost()
     // {
-        
+
     //     $id = Auth::user()->id; 
     //     $posts = Post::where('user_id', $id)->get();
     //     return view('dashboard', compact('posts'));
     // }
 
-//     public function userPost($id)
-// {
-//     $posts = Post::where('user_id', $id)->get();
-//     return view('dashboard', ['posts' => $posts]);
-// }
-public function userPost()
-{
-    $userId = Auth::id();
-    $posts = Post::where('user_id', $userId)->get();
+    //     public function userPost($id)
+    // {
+    //     $posts = Post::where('user_id', $id)->get();
+    //     return view('dashboard', ['posts' => $posts]);
+    // }
+    public function userPost()
+    {
+        $userId = Auth::id();
+        $posts = Post::where('user_id', $userId)->get();
 
-    return view('dashboard', compact('posts'));
-}
+        return view('dashboard', compact('posts'));
+    }
     // public function destroy(Post $post)
     // {
     //     // $post = Post::find($post);
@@ -69,33 +69,39 @@ public function userPost()
     // }
 
     public function destroy($postId)
-{
-    $post = Post::find($postId);
-    if ($post) {
-        $post->delete();
-        return redirect('/moderator')->with('message', 'Post deleted successfully');
-    } else {
-        return redirect('/moderator')->with('error', 'Post not found');
+    {
+        $post = Post::find($postId);
+        if ($post) {
+            $post->delete();
+            return redirect('/moderator')->with('message', 'Post deleted successfully');
+        } else {
+            return redirect('/moderator')->with('error', 'Post not found');
+        }
     }
-}
-public function show(Post $post)
-{
-    return view('post', [
-        'post' => $post
-    ]);
-}
-public function create () {
-    return view('create');
-}
+    public function show(Post $post)
+    {
+        return view('post', [
+            'post' => $post
+        ]);
+    }
+    public function create()
+    {
+        return view('create');
+    }
 
-public function store (Request $request) {
-    $form = $request->validate([
-       'title' => 'required', 
-       'subtitle' => 'required', 
-       'tags' => 'required', 
-       'content' => 'required', 
-    ]);
-    Post::create($form);
-    return redirect('/posts');
-}
+    public function store(Request $request)
+    {
+        $form = $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'tags' => 'required',
+            'content' => 'required',
+        ]);
+
+        $form['user_id'] = Auth::id();
+
+        Post::create($form);
+        // Post::create($request->all());
+        return redirect('/posts')->with('message', 'Your post created successfully.');
+    }
 }
