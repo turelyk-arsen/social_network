@@ -30,8 +30,14 @@
                             class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
                             POST</button>
                     </form>
+
+
                 </div>
                @endif
+                   <form action="/posts/{{ $post->id }}/comment" method="get">
+                        <button type="submit"
+                            class="rounded-md bg-indigo-600 mt-10 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Comment</button>
+                    </form>
             </div>
 
             <div

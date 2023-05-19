@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChuckNorrisController;
 
@@ -47,6 +48,9 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
 Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+
+Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
+
 Route::delete('/moderator/{post}/delete', [PostController::class, 'dest']);
 
     
