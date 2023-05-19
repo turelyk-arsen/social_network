@@ -5,10 +5,13 @@
         </h2>
     </x-slot>
 
+    <x-flash/>
 
     <section class="relative py-20 overflow-hidden bg-white p-10 max-w-4xl mx-auto mt-10">
-        <form method="POST" action="/posts" enctype="multipart/form-data">
+        <form method="POST" action="/posts/comment/store">
             @csrf
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Add comment to the post</h2>
@@ -26,7 +29,7 @@
                             @error('content')
                                 <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
                             @enderror
-                            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences your post.</p>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences your comment.</p>
                         </div>
                     </div>
                 </div>

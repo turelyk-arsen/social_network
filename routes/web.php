@@ -43,13 +43,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
 
-Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
+// Route::post('/posts/{post}', [CommentController::class, 'index']);
+
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
-Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+// Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+
+Route::delete('/posts/comment/delete', [CommentController::class, 'destroy']);
 
 Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
+Route::post('/posts/comment/store', [CommentController::class, 'store']);
 
 Route::delete('/moderator/{post}/delete', [PostController::class, 'dest']);
 

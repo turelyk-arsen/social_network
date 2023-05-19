@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -80,12 +82,21 @@ class PostController extends Controller
     //     }
     // }
     
-    public function show(Post $post)
-    {
-        return view('post', [
-            'post' => $post
-        ]);
-    }
+    // public function show(Post $post)
+    // {
+    //     return view('post', [
+    //         'post' => $post
+    //     ]);
+    // }
+    public function show($postId)
+{
+    $post = Post::findOrFail($postId);
+    $comments = Comment::where('post_id', $postId)->latest()->get();
+    $user = User::findOrFail($post->user_id);
+
+    return view('post', compact('post', 'comments', 'user'));
+}
+
     public function create()
     {
         return view('create');
