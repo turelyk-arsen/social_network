@@ -40,7 +40,19 @@ class CommentController extends Controller
         Comment::create($validatedData);
         return redirect()->route('show', ['post' => $validatedData['post_id']])->with('success', 'Comment created successfully.');
     }
-
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Comment $comment)
+    {
+        $validatedData = $request->validate([
+            'content' => 'required|string|max:255',
+            'user_id' => 'required|exists:users,id',
+            'post_id' => 'required|exists:posts,id',
+        ]);
+        $comment->update($validatedData);
+        return redirect()->route('show', ['post' => $validatedData['post_id']])->with('success', 'Коментар успішно оновлено.');
+    }
     /**
      * Display the specified resource.
      */
@@ -53,22 +65,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(Comment $comment) {
+        return view('comment-edit', ['comment'=>$comment]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        $validatedData = $request->validate([
-            'content' => 'required|string|max:255',
-        ]);
-        $comment->update($validatedData);
-        return redirect()->back()->with('success', 'Коментар успішно оновлено.');
-    }
 
     /**
      * Remove the specified resource from storage.

@@ -110,13 +110,13 @@
 
                         @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
                             <div class="mt-1 flex justify-end gap-x-6">
-                                <form action="/posts/{{ $post->id }}/edit" method="get">
+                                <form action="{{ route('comments.edit', $comment->id) }}" method="get">
                                     @csrf
                                     <button type="submit"
                                         class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
                                     </button>
                                 </form>
-                                <form action="/posts/comment/delete" method="post">
+                                <form action=" {{ route('comments.destroy', $comment->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
