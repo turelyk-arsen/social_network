@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,10 +24,11 @@ class ChuckNorrisController extends Controller
 
         $user = Auth::user();
         $posts = Post::where('user_id', $user->id)->get();
+        $users = User::all();
 
         // return view('chuck-norris-joke', ['joke' => $joke['value']]);
         // return $joke['value'];
-        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts]);
+        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts, 'users'=> $users]);
 
     }
 }
