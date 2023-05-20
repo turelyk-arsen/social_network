@@ -17,9 +17,9 @@ use App\Http\Controllers\ChuckNorrisController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', [PostController::class, 'home']);
 

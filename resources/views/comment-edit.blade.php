@@ -5,22 +5,6 @@
         </h2>
     </x-slot>
 
-
-    {{-- <section class="relative py-20 overflow-hidden bg-white p-10 max-w-4xl mx-auto mt-10">
-        <form method="POST" action="/posts/{{ $post->id }}" enctype="multipart/form-data">
-            <div class="space-y-12">
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900"><a href="/posts"
-                            class="text-black ml-4"> Cancel</a></button>
-                    <button type="submit"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
-                </div>
-        </form>
-    </section> --}}
-
-
-
-
     <section class="relative py-20 overflow-hidden bg-white p-10 max-w-4xl mx-auto mt-10">
         <form method="POST" action="/posts/{{ $comment->id }}/edit">
             @csrf
