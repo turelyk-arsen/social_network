@@ -18,9 +18,9 @@ use App\Http\Controllers\ChuckNorrisController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Route::get('/chat', function () {
+//     return view('chat');
+// })->name('chat');
 
 Route::get('/', [PostController::class, 'home']);
 
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/dashboard', [PostController::class, 'userPost']);
 
-Route::get('/chat/{userId}', [ChatController::class, 'index'])->middleware('auth');
+Route::get('/chat/{userId}', [ChatController::class, 'index'])->middleware('auth')->name('chat');
 Route::post('/chat/send-message', [ChatController::class, 'store'])->middleware('auth');
 Route::get('/chat/get-messages', [ChatController::class, 'getMessages'])->middleware('auth')->name('chat.get-messages');
 
