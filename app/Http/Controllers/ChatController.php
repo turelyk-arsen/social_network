@@ -15,15 +15,21 @@ class ChatController extends Controller
         $to_user_id = User::findOrFail($userId);
         $users = User::where('id', '!=', $from_user_id->id)->get();
 
-        return view('chat', compact('users', 'from_user_id', 'to_user_id'));
+        $messages = Message::where(function ($query) use ($from_user_id, $to_user_id) {
+            $query->where('from_user_id', $from_user_id->id)->where('to_user_id', $to_user_id->id);
+        })->orWhere(function ($query) use ($from_user_id, $to_user_id) {
+            $query->where('from_user_id', $to_user_id->id)->where('to_user_id', $from_user_id->id);
+        })->orderBy('created_at', 'asc')->get();
+
+        return view('chat', compact('users', 'from_user_id', 'to_user_id', 'messages'));
     }
 
     public function store(Request $request)
     {
         // Validate the request data
-        $validatedData =$request->validate([
-            'from_user_id' => 'required|exists:users,id',
-            'to_user_id' => 'required|exists:users,id',
+        $validatedData = $request->validate([
+            'from_user_id' => 'required',
+            'to_user_id' => 'required',
             'content' => 'required',
         ]);
         // Create a new message
@@ -33,18 +39,8 @@ class ChatController extends Controller
         // $message->content = $request->content;
         // $message->save();
         Message::create($validatedData);
-        return redirect()->route('chat')->with('success', 'Message sent successfully.');
+        return back()->with('success', 'Message sent successfully.');
     }
-    // public function store(Request $request)
-    // {       
-    //     $validatedData = $request->validate([
-    //         'content' => 'required|string|max:255',
-    //         'user_id' => 'required|exists:users,id',
-    //         'post_id' => 'required|exists:posts,id',
-    //     ]);
-    //     Comment::create($validatedData);
-    //     return redirect()->route('show', ['post' => $validatedData['post_id']])->with('success', 'Comment created successfully.');
-    // }
 
     public function getMessages(Request $request)
     {

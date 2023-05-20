@@ -43,6 +43,11 @@
         </div> --}}
     <x-user-profile />
 
+    @if ($hasNewMessages)
+        <div class="new-messages">
+            <p>You have new messages in the chat.</p>
+        </div>
+    @endif
     {{-- Admin delete user --}}
     {{-- @if (Auth::user()->name == 'admin')
 
@@ -164,26 +169,29 @@
                 friend who you'd send message</h2>
             <div class="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
                 @foreach ($users as $user)
-                    <div class="flex flex-col items-center justify-center col-span-1">
-                        <div class="relative p-5">
-                            <div
-                                class="absolute z-10 w-full h-full -mt-5 -ml-5 rounded-full rounded-tr-none bg-blue-50">
+                    @if ($user->id !== Auth::user()->id)
+                        <div class="flex flex-col items-center justify-center col-span-1">
+                            <div class="relative p-5">
+                                <div
+                                    class="absolute z-10 w-full h-full -mt-5 -ml-5 rounded-full rounded-tr-none bg-blue-50">
+                                </div>
+                                <img class="relative z-20 w-full rounded-full"
+                                    src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/No_image_available.svg.png') }}">
                             </div>
-                            <img class="relative z-20 w-full rounded-full"
-                                src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/No_image_available.svg.png') }}">
+                            <div class="mt-3 space-y-2 text-center">
+                                <div class="space-y-1 text-lg font-medium leading-6">
+                                    <h3>{{ $user->name }}</h3>
+                                    <p class="text-blue-600">{{ $user->role }}</p>
+                                </div>
+                                <div class="relative flex items-center justify-center space-x-3">
+                                    <button type="button"
+                                        class="rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        <a href="/chat/{{ $user->id }}" class="text-black-300 hover:text-gray-100 ">
+                                            Chat</a></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mt-3 space-y-2 text-center">
-                            <div class="space-y-1 text-lg font-medium leading-6">
-                                <h3>{{ $user->name }}</h3>
-                                <p class="text-blue-600">{{ $user->role }}</p>
-                            </div>
-                            <div class="relative flex items-center justify-center space-x-3">
-                                <button type="button" class="rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                    <a href="/chat/{{ $user->id }}"
-                                    class="text-black-300 hover:text-gray-100 "> Chat</a></button>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
