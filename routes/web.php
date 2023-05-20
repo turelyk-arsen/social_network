@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
@@ -38,6 +39,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route::get('/dashboard', [PostController::class, 'userPost']);
+
+Route::get('/chat/{userId}', [ChatController::class, 'index'])->middleware('auth');
+Route::post('/chat/send-message', [ChatController::class, 'store'])->middleware('auth');
+Route::get('/chat/get-messages', [ChatController::class, 'getMessages'])->middleware('auth')->name('chat.get-messages');
 
 
 Route::get('/posts/create', [PostController::class, 'create']);
