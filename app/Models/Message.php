@@ -14,6 +14,7 @@ class Message extends Model
         'from_user_id',
         'to_user_id',
         'content',
+        'is_read',
     ];
 
     public function fromUser()
