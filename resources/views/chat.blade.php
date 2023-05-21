@@ -263,6 +263,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1 mx-4">
+                                @if ($to_user_id->id != Auth::user()->id)
                                 <form action="/chat/send-message" method="post" class="mt-4">
                                     @csrf
                                     <div class="flex">
@@ -275,6 +276,7 @@
                                             class="bg-indigo-500 text-white py-2 px-4 rounded-r-lg ml-2">Send</button>
                                     </div>
                                 </form>
+                                @endif
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
