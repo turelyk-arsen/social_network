@@ -38,6 +38,16 @@
                     <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
                         {{ __('Posts') }}
                     </x-dropdown-link>
+                    {{-- <x-dropdown-link :href="route('chat.1')" :active="request()->routeIs('chat')">
+                        {{ __('Chat') }}
+                    </x-dropdown-link> --}}
+                    @php
+                    $user = Auth::user();
+                    @endphp
+                    <x-dropdown-link :href="route('chat', ['userId' => $user->id])" :active="request()->routeIs('chat')">
+                        {{ __('Chat') }}
+                    </x-dropdown-link>
+                    
                     <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Edit profile') }}
                     </x-dropdown-link>

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChuckNorrisController;
 
@@ -16,9 +18,9 @@ use App\Http\Controllers\ChuckNorrisController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/chat', function () {
+//     return view('chat');
+// })->name('chat');
 
 Route::get('/', [PostController::class, 'home']);
 
@@ -38,15 +40,29 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/dashboard', [PostController::class, 'userPost']);
 
+Route::get('/chat/{userId}', [ChatController::class, 'index'])->middleware('auth')->name('chat');
+Route::post('/chat/send-message', [ChatController::class, 'store'])->middleware('auth');
+Route::get('/chat/get-messages', [ChatController::class, 'getMessages'])->middleware('auth')->name('chat.get-messages');
+
 
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
 
-Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
+// Route::post('/posts/{post}', [CommentController::class, 'index']);
+
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
-Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+// Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
+
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('/comments/{comment}', [CommentController::class, 'edit'])->name('comments.edit');
+Route::put('/posts/{comment}/edit', [CommentController::class, 'update']);
+
+Route::get('/posts/{post}/comment', [CommentController::class, 'create']);
+Route::post('/posts/comment/store', [CommentController::class, 'store']);
+
 Route::delete('/moderator/{post}/delete', [PostController::class, 'dest']);
 
     
