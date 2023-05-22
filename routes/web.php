@@ -53,6 +53,7 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
 
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
+Route::delete('/posts/{post}/delete/delete', [PostController::class, 'des']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
 // Route::get('/posts/{post}/delete', [PostController::class, 'delete']);
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('from_user_id');
             $table->unsignedBigInteger('to_user_id');
             $table->text('content');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
 
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
