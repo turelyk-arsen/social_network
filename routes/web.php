@@ -39,8 +39,13 @@ Route::middleware('auth')->group(function () {
 // Route::get('/dashboard', [PostController::class, 'userPost']);
 
 
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store']);
+
+//post create button
+Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
+//display all post
+//Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);

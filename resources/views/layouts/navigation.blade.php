@@ -38,6 +38,14 @@
                     <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
                         {{ __('Posts') }}
                     </x-dropdown-link>
+                    <!--Add Post-->
+                    <x-dropdown-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                        {{ __('Add Post') }}
+                    </x-dropdown-link>
+
+
+
+
                     <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Edit profile') }}
                     </x-dropdown-link>

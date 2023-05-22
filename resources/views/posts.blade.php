@@ -15,13 +15,14 @@
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All posts</h2>
                 <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
                 </p>
-                <form action="/posts/create" method="get">
+                {{--<form action="/posts/create" method="get">
                     <div class="-mt-10 flex justify-end gap-x-6">
                         <button type="submit"
                             class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
                             POST</button>
                     </div>
                 </form>
+                --}}
             </div>
 
             <div
