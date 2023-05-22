@@ -45,6 +45,8 @@ class ChuckNorrisController extends Controller
         $messages = Message::where('to_user_id', $user->id)->get();
         $hasNewMessages = $messages->isNotEmpty();
 
-        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts, 'users' => $users, 'hasNewMessages' => $hasNewMessages]);
+        $newMessagesCount = Message::where('to_user_id', $user->id)->where('is_read', false)->count();
+        
+        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts, 'users' => $users, 'hasNewMessages' => $hasNewMessages, 'newMessagesCount' => $newMessagesCount]);
     }
 }

@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-     <x-flash/>
+    <x-flash />
     {{-- User profile --}}
     <x-user-profile />
 
@@ -54,7 +54,34 @@
                 </p>
             </div>
 
-            <div
+
+            {{-- Card of all POSTS --}}
+            <div class="flex grid grid-cols-12 pb-10 sm:px-5 gap-x-8 gap-y-16">
+                @foreach ($posts as $post)
+                    <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
+                        <a href="/posts/{{ $post->id }}" class="block">
+                            <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
+                                src="{{ asset('storage/' . $post->image) }}">
+                        </a>
+                        <x-tags-posts :tagsS="$post->tags" />
+
+                        <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
+                        <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+                        <form action="/posts/{{ $post->id }}/delete/delete" method="post">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit"
+                                class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                                POST</button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        </section>
+
+        {{-- <div
                 class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($posts as $post)
                     <article class="flex max-w-xl flex-col items-start justify-between">
@@ -96,29 +123,20 @@
                                 <p class="text-gray-600">{{ $post->user->role }} </p>
                             </div>
 
-                            {{-- <form action="/moderator/{{ $post->id }}/delete" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
-                                POST</button>
-                            </form> --}}
-                           {{-- <x-danger-button>{{ __('Delete post '.$post->id) }}</x-danger-button> --}}
-
-                            {{-- <form action="/posts/{{ $post->id }}/delete" method="post">
+                            <form action="/posts/{{ $post->id }}/delete" method="post">
                                 @csrf
                                 @method('DELETE')
         
                                 <button type="submit"
                                     class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
                                     POST</button>
-                            </form> --}}
+                            </form>
                         </div>
                     </article>
                 @endforeach
-            </div>
-        </div>
+            </div> --}}
     </div>
-                                {{-- <button type="submit" class="text-red-500"> <i class="fa-solid fa-trash"></i>Delete </button> --}}
+    </div>
+    {{-- <button type="submit" class="text-red-500"> <i class="fa-solid fa-trash"></i>Delete </button> --}}
 
 </x-app-layout>
