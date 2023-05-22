@@ -149,8 +149,8 @@ class PostController extends Controller
         return redirect('/posts')->with('message','Your post delete successfully');
     }
 
-    public function dest (Post $post) {
+    public function des (Post $post) {
         $post->delete();
-        return redirect('/')->with('message','Your post delete successfully');
+        return redirect('/moderator')->with('message','Your post delete successfully');
     }
 }
