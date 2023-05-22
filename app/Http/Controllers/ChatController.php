@@ -21,6 +21,20 @@ class ChatController extends Controller
             $query->where('from_user_id', $to_user_id->id)->where('to_user_id', $from_user_id->id);
         })->orderBy('created_at', 'asc')->get();
 
+        // $unreadCount = Message::where('from_user_id', $to_user_id->id)
+        // ->where('to_user_id', $from_user_id->id)
+        // ->where('is_read', false)
+        // ->count();
+
+        $unreadCount = [];
+        foreach ($users as $user) {
+            $count = Message::where('from_user_id', $user->id)
+                        ->where('to_user_id', $from_user_id->id)
+                        ->where('is_read', false)
+                        ->count();
+            $unreadCount[$user->id] = $count;
+        }
+
         foreach ($messages as $message) {
             if ($message->to_user_id == $from_user_id->id && !$message->is_read) {
                 $message->is_read = true;
@@ -28,7 +42,7 @@ class ChatController extends Controller
             }
         }
 
-        return view('chat', compact('users', 'from_user_id', 'to_user_id', 'messages'));
+        return view('chat', compact('users', 'from_user_id', 'to_user_id', 'messages', 'unreadCount'));
     }
 
     public function store(Request $request)
