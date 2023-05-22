@@ -45,7 +45,7 @@ class PostController extends Controller
     // public function userPost()
     // {
 
-    //     $id = Auth::user()->id; 
+    //     $id = Auth::user()->id;
     //     $posts = Post::where('user_id', $id)->get();
     //     return view('dashboard', compact('posts'));
     // }
@@ -79,7 +79,7 @@ class PostController extends Controller
     //         return redirect('/moderator')->with('error', 'Post not found');
     //     }
     // }
-    
+
     public function show(Post $post)
     {
         return view('post', [
@@ -102,7 +102,7 @@ class PostController extends Controller
 
         $form['user_id'] = Auth::id();
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $form['image'] = $request->file('image')->store('photos', 'public');
         }
 
@@ -111,11 +111,13 @@ class PostController extends Controller
         return redirect('/posts')->with('message', 'Your post created successfully.');
     }
 
-    public function edit(Post $post) {
-        return view('post-edit', ['post'=>$post]);
+    public function edit(Post $post)
+    {
+        return view('post-edit', ['post' => $post]);
     }
 
-    public function update(Request $request, Post $post) {
+    public function update(Request $request, Post $post)
+    {
         $form = $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
@@ -125,21 +127,23 @@ class PostController extends Controller
 
         $form['user_id'] = Auth::id();
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $form['image'] = $request->file('image')->store('photos', 'public');
         }
 
         $post->update($form);
         return redirect('/posts')->with('message', 'Your post update successfully.');
     }
-    
-    public function destroy (Post $post) {
+
+    public function destroy(Post $post)
+    {
         $post->delete();
-        return redirect('/posts')->with('message','Your post delete successfully');
+        return redirect('/posts')->with('message', 'Your post delete successfully');
     }
 
-    public function dest (Post $post) {
+    public function dest(Post $post)
+    {
         $post->delete();
-        return redirect('/')->with('message','Your post delete successfully');
+        return redirect('/')->with('message', 'Your post delete successfully');
     }
 }

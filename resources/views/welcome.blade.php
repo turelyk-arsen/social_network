@@ -123,8 +123,9 @@
                                     <a href="/?tag={{ $tag }}">{{ $tag }}</a>
                                 </li>
                             @endforeach
-                            <img src="{{ asset('storage/'.$post->image) }}" alt=""
+                            <img src="/storage/{{ $post->image }}" alt=""
                                 class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center">
+
                             <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
                         </div>
 
