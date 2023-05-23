@@ -55,7 +55,7 @@
                         <div class="my-4">
                             <textarea placeholder="Message*" name="messText"
                                 class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline">{{ old('message') }}</textarea>
-                            @error('message')
+                            @error('messText')
                                 <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
                             @enderror
                         </div>
