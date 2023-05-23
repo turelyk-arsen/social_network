@@ -1,5 +1,4 @@
-
-    @props(['newMessagesCount'])
+@props(['newMessagesCount'])
 
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
@@ -22,25 +21,27 @@
                     @endauth
 
 
-                    {{-- <a href="{{ route('dashboard') }}"> 
+                    {{-- <a href="{{ route('dashboard') }}">
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a> --}}
                 </div>
 
                 <!-- Navigation Links -->
+                <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
+                    {{ __('Home') }}
+                </x-dropdown-link>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @if (auth()->user()->role === 'moderator')
                         <x-nav-link :href="route('moderator')" :active="request()->routeIs('moderator')">
-                            {{ __('Dashboard') }}
+                            {{ __('Profile') }}
                         </x-nav-link>
                     @else
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                            {{ __('Profile') }}
                         </x-nav-link>
                     @endif
-                    <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
-                        {{ __('Posts') }}
-                    </x-dropdown-link>
+
                     {{-- <x-dropdown-link :href="route('chat.1')" :active="request()->routeIs('chat')">
                         {{ __('Chat') }}
                     </x-dropdown-link> --}}
@@ -108,7 +109,7 @@
                     </svg>
                 </button> --}}
                 <button type="button"
-                    class="relative rounded-full bg-gray-50 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    class="relative rounded-full bg-gray-50 p-1 text-gray-400  hover:bg-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray">
                     <span class="sr-only">View notifications</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                         aria-hidden="true">
