@@ -8,6 +8,6 @@
     <h1>Welcome, {{ $firstName }} {{ $lastName }}</h1>
     <p>Email: {{ $email }}</p>
     <p>Phone: {{ $phone }}</p>
-    <p>Message: {{ $message }}</p>
+    <p>Message: {{ $messText }}</p>
 </body>
 </html>

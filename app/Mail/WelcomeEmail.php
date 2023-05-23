@@ -17,17 +17,17 @@ class WelcomeEmail extends Mailable
     public $lastName;
     public $email;
     public $phone;
-    public $message;
+    public $messText;
     /**
      * Create a new message instance.
      */
-    public function __construct($firstName, $lastName, $email, $phone, $message)
+    public function __construct($firstName, $lastName, $email, $phone, $messText)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
         $this->phone = $phone;
-        $this->message = $message;
+        $this->messText = $messText;
     }
 
     public function build()
@@ -39,7 +39,7 @@ class WelcomeEmail extends Mailable
                         'lastName' => $this->lastName,
                         'email' => $this->email,
                         'phone' => $this->phone,
-                        'message' => $this->message,
+                        'message' => $this->messText,
                     ]);
     }
     /**

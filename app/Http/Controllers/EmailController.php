@@ -11,17 +11,26 @@ class EmailController extends Controller
 {
     public function sendEmail(Request $request)
     {
-     
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'messText' => 'required',
+        ]);
+
         $firstName = $request->input('first_name');
         $lastName = $request->input('last_name');
         $email = $request->input('email');
         $phone = $request->input('phone');
-        $message = $request->input('message');
+        $messText = $request->input('messText');
 
- 
-        // Mail::to('turelyk.as@gmail.com')->send(new WelcomeEmail($firstName, $lastName, $email, $phone, $message));
+
+        Mail::to('arsen.turelyk@gmail.com')->send(new WelcomeEmail($firstName, $lastName, $email, $phone, $messText));
 
         // return response()->json(['message' => 'Email sent successfully']);
-        return redirect('/');
+        // return redirect('/');
+        return redirect()->back()->with('success', 'Message send!');
     }
 }
