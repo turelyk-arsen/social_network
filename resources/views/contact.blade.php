@@ -13,29 +13,55 @@
                 <div class="flex">
                     <h1 class="font-bold uppercase text-5xl">Send us a <br /> message</h1>
                 </div>
-                {{-- <form action="/send-email" method="POST"> --}}
-                <form action="mailto:admin@example.com" method="POST" enctype="text/plain">
+                <form action="/send-email" method="POST">
+                    {{-- <form action="mailto:admin@example.com" method="POST" enctype="text/plain"> --}}
                     @csrf
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-                        <input name="first_name"
-                            class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="First Name*" />
-                        <input name="last_name"
-                            class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Last Name*" />
-                        <input name="email"
-                            class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="email" placeholder="Email*" />
-                        <input name="phone"
-                            class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-                            type="number" placeholder="Phone*" />
+                        <div>
+                            <input name="first_name" value="{{ old('first_name') }}"
+                                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="First Name*" />
+                            @error('first_name')
+                                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <input name="last_name" value="{{ old('last_name') }}"
+                                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Last Name*" />
+                            @error('last_name')
+                                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <input name="email" value="{{ old('email') }}"
+                                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                type="email" placeholder="Email*" />
+                            @error('email')
+                                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <input name="phone" value="{{ old('phone') }}"
+                                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                type="number" placeholder="Phone*" />
+                            @error('phone')
+                                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            @enderror
+                        </div>
+
                     </div>
-                    <div class="my-4">
-                        <textarea placeholder="Message*" name="message"
-                            class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+                    <div>
+                        <div class="my-4">
+                            <textarea placeholder="Message*" name="messText"
+                                class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline">{{ old('message') }}</textarea>
+                            @error('message')
+                                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                     <div class="my-2 w-1/2 lg:w-1/4">
-                        <button
+                        <button type="submit"
                             class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
                       focus:outline-none focus:shadow-outline">
                             Send Message
