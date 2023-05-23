@@ -146,6 +146,7 @@
                         <div class="p-3 text-white bg-blue-500 rounded-full" data-primary="blue-500"
                             data-rounded="rounded-full">
                         </div>
+<<<<<<< Updated upstream
 
                         <a href="/posts/{{ $post->id }}" class="block">
                             <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 grayscale hover:grayscale-0"
@@ -155,6 +156,13 @@
 
                         <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
                         <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+=======
+                        <a href="/posts/{{ $post->id }}"><img
+                                class="grayscale hover:grayscale-0"src="{{ asset('storage/' . $post->image) }}"
+                                class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center"></a>
+                        <h4 class="text-xl font-medium text-gray-700">{{ $post->title }}</h4>
+                        <p class="text-base line-clamp-5 text-center text-gray-500">{{ $post->content }}</p>
+>>>>>>> Stashed changes
 
                     </div>
                 @endforeach
