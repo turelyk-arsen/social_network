@@ -1,7 +1,7 @@
 <x-app-layout :newMessagesCount="$newMessagesCount">
-    <x-slot name="header" >
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Your profile') }}
         </h2>
     </x-slot>
 
@@ -188,7 +188,8 @@
                                 <div class="relative flex items-center justify-center space-x-3">
                                     <button type="button"
                                         class="rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                        <a href="/chat/{{ $user->id }}" class="text-black-300 hover:text-gray-100 ">
+                                        <a href="/chat/{{ $user->id }}"
+                                            class="text-black-300 hover:text-gray-100 ">
                                             Chat</a></button>
                                 </div>
                             </div>
