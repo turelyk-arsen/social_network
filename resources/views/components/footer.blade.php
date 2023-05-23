@@ -1,5 +1,4 @@
-<div class="bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 tails-selected-element"
-contenteditable="true">
+<div class="bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 tails-selected-element">
 <nav class="flex flex-wrap justify-center -mx-5 -my-2">
     <div class="px-5 py-2">
         <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
@@ -22,7 +21,7 @@ contenteditable="true">
         </a>
     </div>
     <div class="px-5 py-2">
-        <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+        <a href="/contact" class="text-base leading-6 text-gray-500 hover:text-gray-900">
             Contact
         </a>
     </div>

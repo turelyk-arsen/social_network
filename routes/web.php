@@ -18,9 +18,9 @@ use App\Http\Controllers\ChuckNorrisController;
 |
 */
 
-// Route::get('/chat', function () {
-//     return view('chat');
-// })->name('chat');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/', [PostController::class, 'home']);
 
