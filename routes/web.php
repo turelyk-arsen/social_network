@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChuckNorrisController;
@@ -18,9 +19,9 @@ use App\Http\Controllers\ChuckNorrisController;
 |
 */
 
-// Route::get('/chat', function () {
-//     return view('chat');
-// })->name('chat');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/', [PostController::class, 'home']);
 
@@ -47,6 +48,8 @@ Route::get('/chat/get-messages', [ChatController::class, 'getMessages'])->middle
 
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
+
+Route::post('/send-email', [EmailController::class, 'sendEmail']);
 
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
 // Route::post('/posts/{post}', [CommentController::class, 'index']);
