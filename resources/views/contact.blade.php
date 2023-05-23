@@ -13,7 +13,8 @@
                 <div class="flex">
                     <h1 class="font-bold uppercase text-5xl">Send us a <br /> message</h1>
                 </div>
-                <form action="/send-email" method="POST">
+                {{-- <form action="/send-email" method="POST"> --}}
+                <form action="mailto:admin@example.com" method="POST" enctype="text/plain">
                     @csrf
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
                         <input name="first_name"

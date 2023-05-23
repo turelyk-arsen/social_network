@@ -18,14 +18,28 @@
             </a>
         </div>
         <div class="px-5 py-2">
-            <a href="/chat/{{Auth::user()->id}}"  class="text-base  uppercase leading-6 text-gray-500 hover:text-gray-900">
-                Chat
-            </a>
+            {{-- <a href="/chat/{{Auth::user()->id}}"  class="text-base  uppercase leading-6 text-gray-500 hover:text-gray-900"> --}}
+            @if (Auth::user())
+                <a href="/chat/{{ Auth::user()->id }}"
+                    class="text-base  uppercase leading-6 text-gray-500 hover:text-gray-900">
+                    Chat
+                </a>
+            @else
+                <a href="/login" class="text-base  uppercase leading-6 text-gray-500 hover:text-gray-900">
+                    Chat
+                </a>
+            @endif
         </div>
         <div class="px-5 py-2">
-            <a href="/contact" class="text-base uppercase leading-6 text-gray-500 hover:text-gray-900">
-                Contact
-            </a>
+            @if (Auth::user())
+                <a href="/contact" class="text-base uppercase leading-6 text-gray-500 hover:text-gray-900">
+                    Contact
+                </a>
+            @else
+                <a href="/login" class="text-base uppercase leading-6 text-gray-500 hover:text-gray-900">
+                    Contact
+                </a>
+            @endif
         </div>
 
     </nav>
