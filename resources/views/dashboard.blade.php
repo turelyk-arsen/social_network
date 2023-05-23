@@ -45,10 +45,10 @@
 
     @if ($hasNewMessages)
         <div class="new-messages">
-            <p>You have new messages in the chat.</p>
+            <p>You have {{ $newMessagesCount }} new messages in the chat.</p>
         </div>
     @endif
-    <p>У вас {{ $newMessagesCount }} нових повідомлень.</p>
+    {{-- <p>У вас {{ $newMessagesCount }} нових повідомлень.</p> --}}
 
     {{-- Admin delete user --}}
     {{-- @if (Auth::user()->name == 'admin')
@@ -133,22 +133,44 @@
 
     {{-- @yield('joke') --}}
     <section class="py-20 bg-white tails-selected-element bg-[url('/images/16150556.jpg')] bg-cover">
-        <div class="container max-w-6xl mx-auto">
-
-            <x-joke :joke=$joke />
-            <h2 class="text-4xl font-bold tracking-tight text-center">My posts</h2>
+        <div class="container max-9-xl mx-auto  ">
+            <div class="py-10 bg-white rounded-xl  mix-blend-normal shadow-lg px-10 w-2/3 m-auto italic">
+                <x-joke :joke=$joke />
+            </div>
+            <h2 class="text-4xl font-bold tracking-tight text-center py-10 m-auto ">My posts</h2>
             <p class="mt-2 text-lg text-center text-gray-600">Check out my list of awesome posts below.</p>
             <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
                 @foreach ($posts as $post)
-                    <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
+                    {{-- <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
                         data-rounded="rounded-xl" data-rounded-max="rounded-full">
                         <div class="p-3 text-white bg-blue-500 rounded-full" data-primary="blue-500"
                             data-rounded="rounded-full">
                         </div>
-                        <a href="/posts/{{ $post->id }}"><img src="{{ asset('storage/' . $post->image) }}"
-                                class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center"></a>
-                        <h4 class="text-xl font-medium text-gray-700">{{ $post->title }}</h4>
-                        <p class="text-base line-clamp-5 text-center text-gray-500">{{ $post->content }}</p>
+
+                        <a href="/posts/{{ $post->id }}" class="block">
+                            <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 grayscale hover:grayscale-0"
+                                src="{{ asset('storage/' . $post->image) }}">
+                        </a>
+                        <x-tags-posts :tagsS="$post->tags" />
+
+                        <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
+                        <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+
+                    </div> --}}
+
+                    <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
+                        data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                        <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
+                            <a href="/posts/{{ $post->id }}" class="block">
+                                <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
+                                    src="{{ asset('storage/' . $post->image) }}">
+                            </a>
+                            <x-tags-posts :tagsS="$post->tags" />
+
+                            <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
+                            <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+
+                        </div>
                     </div>
                 @endforeach
             </div>
