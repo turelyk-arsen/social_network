@@ -178,11 +178,29 @@
             </div>
         </main>
         <!-- main ends here -->
+        @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
+            <div class="-mt-10 flex justify-end gap-x-6 mb-4">
+                <form action="/posts/{{ $post->id }}/edit" method="get">
+                    @csrf
+                    <button type="submit"
+                        class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
+                        POST</button>
+                </form>
+                <form action="/posts/{{ $post->id }}/delete" method="post">
+                    @csrf
+                    @method('DELETE')
 
+                    <button type="submit"
+                        class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                        POST</button>
+                </form>
+
+
+            </div>
+        @endif
     </div>
 
-    <section
-        class="relative flex items-center justify-center py-10 antialiased  bg-slate-50 min-w-screen">
+    <section class="relative flex items-center justify-center py-10 antialiased  bg-slate-50 min-w-screen">
         <div class="container px-0 mx-auto sm:px-5">
 
             {{-- <div
@@ -247,26 +265,6 @@
             <h3 class="mt-3 text-3xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                 Comments
             </h3>
-            @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
-                <div class="-mt-10 flex justify-end gap-x-6">
-                    <form action="/posts/{{ $post->id }}/edit" method="get">
-                        @csrf
-                        <button type="submit"
-                            class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
-                            POST</button>
-                    </form>
-                    <form action="/posts/{{ $post->id }}/delete" method="post">
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit"
-                            class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
-                            POST</button>
-                    </form>
-
-
-                </div>
-            @endif
 
             @foreach ($comments as $comment)
                 <div
@@ -300,24 +298,25 @@
                             </button>
                         </div>
                     </div>
+
+                    @if (Auth::user()->id == $comment->user_id || Auth::user()->role == 'moderator')
+                        <div class="mt-1 flex justify-end gap-x-6">
+                            <form action="{{ route('comments.edit', $comment->id) }}" method="get">
+                                @csrf
+                                <button type="submit"
+                                    class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
+                                </button>
+                            </form>
+                            <form action=" {{ route('comments.destroy', $comment->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
+                                </button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
-                @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
-                    <div class="mt-1 flex justify-end gap-x-6">
-                        <form action="{{ route('comments.edit', $comment->id) }}" method="get">
-                            @csrf
-                            <button type="submit"
-                                class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit
-                            </button>
-                        </form>
-                        <form action=" {{ route('comments.destroy', $comment->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
-                            </button>
-                        </form>
-                    </div>
-                @endif
             @endforeach
 
             <form action="/posts/{{ $post->id }}/comment" method="get">
