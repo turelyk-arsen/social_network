@@ -43,11 +43,11 @@
         </div> --}}
     <x-user-profile />
 
-    @if ($hasNewMessages)
+    {{-- @if ($hasNewMessages)
         <div class="new-messages">
             <p>You have {{ $newMessagesCount }} new messages in the chat.</p>
         </div>
-    @endif
+    @endif --}}
     {{-- <p>У вас {{ $newMessagesCount }} нових повідомлень.</p> --}}
 
     {{-- Admin delete user --}}
