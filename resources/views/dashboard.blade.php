@@ -1,5 +1,5 @@
 <x-app-layout :newMessagesCount="$newMessagesCount">
-    <x-slot name="header">
+    <x-slot name="header" class="bg-white">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Your profile') }}
         </h2>
@@ -41,13 +41,16 @@
                 </div>
             </div>
         </div> --}}
-    <x-user-profile />
+    <x-user-profile class="bg-white" />
 
-    @if ($hasNewMessages)
-        <div class="new-messages">
-            <p>You have {{ $newMessagesCount }} new messages in the chat.</p>
-        </div>
-    @endif
+    <div style="position: absolute; top: 220px; right: 10%">
+        @if ($hasNewMessages)
+            <div class="new-messages ">
+                <p>You have {{ $newMessagesCount }} new messages in the chat.</p>
+            </div>
+        @endif
+    </div>
+
     {{-- <p>У вас {{ $newMessagesCount }} нових повідомлень.</p> --}}
 
     {{-- Admin delete user --}}
@@ -132,14 +135,17 @@
     {{-- list of post ---- user --}}
 
     {{-- @yield('joke') --}}
-    <section class="py-20 bg-white tails-selected-element bg-[url('/images/16150556.jpg')] bg-cover">
-        <div class="container max-9-xl mx-auto  ">
-            <div class="py-10 bg-white rounded-xl  mix-blend-normal shadow-lg px-10 w-2/3 m-auto italic">
-                <x-joke :joke=$joke />
-            </div>
-            <h2 class="text-4xl font-bold tracking-tight text-center py-10 m-auto ">My posts</h2>
-            <p class="mt-2 text-lg text-center text-gray-600">Check out my list of awesome posts below.</p>
-            <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
+    <section style="margin:auto; "
+        class="  px-16  bg-white tails-selected-element bg-gradient-to-r from-bg-white justify-center">
+        <div style="margin:auto;" class="container max-9-xl mx-auto justify-center  ">
+
+            <p class="font-medium tracking-wide text-gray-400 uppercase">Open the post to see it in details </p>
+            <h2 style="font-family: 'Comfortaa', cursive;"
+                class="relative max-w-lg mt-5 mb-10 text-4xl font-semibold leading-tight lg:text-5xl uppercase">My posts
+            </h2>
+
+            <div style="margin:auto; padding-left: 8%"
+                class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
                 @foreach ($posts as $post)
                     {{-- <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
                         data-rounded="rounded-xl" data-rounded-max="rounded-full">
@@ -158,67 +164,100 @@
 
                     </div> --}}
 
-                    <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
+                    <div style="  color: rgb(0, 0, 0);  "
+                        class="transition grid-rows-3 relative flex flex-col justify-between col-span-4  xl:col-span-3 hover:col-span-4 px-10 py-8 space-y-2 overflow-hidden backdrop-blur-xl  shadow-black sm:rounded-xl "
                         data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                        <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
+                        <div class=" tflex flex-col items-start col-span-3 space-y-3 sm:col-span-3 xl:col-span-3">
                             <a href="/posts/{{ $post->id }}" class="block">
-                                <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
+                                <img style="margin-right:10px"
+                                    class="object-cover w-full  mb-6  overflow-hidden  shadow-sm grayscale hover:grayscale-0"
                                     src="{{ asset('storage/' . $post->image) }}">
                             </a>
-                            <x-tags-posts :tagsS="$post->tags" />
 
-                            <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
-                            <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+
+                            <h2 style="font-family: 'Comfortaa', cursive; font-size: 22px"
+                                class=" uppercase  font-bold   line-clamp-3">
+                                {{ $post->title }}</h2>
+                            <p class=" text-justify border-l-2 border-gray-500 px-5 text-sm text-gray-500 line-clamp-5">
+                                {{ $post->content }}</p>
+
+
+
+                        </div>
+                        <div class=" justify-end py-2 hover:underline ">
+                            <a href="/posts/{{ $post->id }}" class="block">
+                                <p style="width:100%;  font-family: 'Comfortaa' ,
+                            cursive; font-size: 12px; text-align: right"
+                                    class="  relative px-8  uppercase font-bold  ">READ MORE
+                                    <svg style="top: 0px; right:10" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                        class=" absolute w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                    </svg>
+
+                                </p>
+                            </a>
 
                         </div>
                     </div>
                 @endforeach
+
+            </div>
+            <div style=" color: rgb(0, 0, 0);  "
+                class="py-10 rounded-xl  mix-blend-normal  px-10 w-2/3 m-auto  flex flex-col items-end mt-0 -mr-16 ">
+                <x-joke :joke=$joke />
             </div>
         </div>
-    </section>
+        <section class="relative py-20 overflow-hidden ">
 
-    {{-- list of friend --- user --}}
-    <section class="relative py-20 overflow-hidden bg-white">
 
-        <span class="absolute top-0 right-0 flex flex-col items-end mt-0 -mr-16 opacity-60">
             <span
-                class="container hidden w-screen h-32 max-w-xs mt-20 transform rounded-full rounded-r-none md:block md:max-w-xs lg:max-w-lg 2xl:max-w-3xl bg-blue-50"></span>
-        </span>
+                class="container hidden w-screen h-32 max-w-xs  transform rounded-full  lg:max-w-lg  bg-blue-50"></span>
+            </span>
 
-        <span class="absolute bottom-0 left-0"> </span>
+            <span class="absolute bottom-0 left-0"> </span>
 
-        <div class="relative px-16 mx-auto max-w-7xl">
-            <p class="font-medium tracking-wide text-blue-500 uppercase">All users are your Future Friends</p>
-            <h2 class="relative max-w-lg mt-5 mb-10 text-4xl font-semibold leading-tight lg:text-5xl">An incredible
-                friend who you'd send message</h2>
-            <div class="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
-                @foreach ($users as $user)
-                    @if ($user->id !== Auth::user()->id)
-                        <div class="flex flex-col items-center justify-center col-span-1">
-                            <div class="relative p-5">
-                                <div
-                                    class="absolute z-10 w-full h-full -mt-5 -ml-5 rounded-full rounded-tr-none bg-blue-50">
+            <div class="relative px-16 mx-auto max-w-7xl">
+                <p class="font-medium tracking-wide text-gray-400 uppercase">visit your friends profile</p>
+                <h2 style="font-family: 'Comfortaa', cursive;"
+                    class="relative max-w-lg mt-5 mb-10 text-4xl font-semibold leading-tight lg:text-5xl uppercase">My
+                    friends</h2>
+                <div class="shrink-0 grid w-full grid-cols-2 gap-20 sm:grid-cols-3 lg:grid-cols-2 ">
+                    @foreach ($users as $user)
+                        @if ($user->id !== Auth::user()->id)
+                            <div class="flex place-content-between shadow pr-10 rounded-xl">
+                                <div class="shrink-0 relative p-5">
+                                    <div class="">
+                                    </div>
+                                    <img class="transition relative z-20 w-20 rounded-full"
+                                        src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/No_image_available.svg.png') }}">
                                 </div>
-                                <img class="relative z-20 w-full rounded-full"
-                                    src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/No_image_available.svg.png') }}">
-                            </div>
-                            <div class="mt-3 space-y-2 text-center">
-                                <div class="space-y-1 text-lg font-medium leading-6">
-                                    <h3>{{ $user->name }}</h3>
-                                    <p class="text-blue-600">{{ $user->role }}</p>
+                                <div class="shrink-0 relative p-5">
+                                    <div class=" shrink-0 mt-3 space-y-2 text-center">
+                                        <div class="space-y-1 text-lg   leading-6">
+                                            <h3 class="uppercase font-medium">{{ $user->name }}</h3>
+                                            <p class="text-blue-600">{{ $user->role }}</p>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="relative flex items-center justify-center space-x-3">
+                                <div style="width: 60px"></div>
+                                <div class="shrink-0 relative flex items-center justify-end">
                                     <button type="button"
-                                        class="rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        class="shrink-0 rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                         <a href="/chat/{{ $user->id }}"
                                             class="text-black-300 hover:text-gray-100 ">
                                             Chat</a></button>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                @endforeach
+                        @endif
+                    @endforeach
+                </div>
             </div>
-        </div>
+        </section>
     </section>
+
+    {{-- list of friend --- user --}}
+
 </x-app-layout>

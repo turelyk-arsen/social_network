@@ -1,5 +1,5 @@
-<div class="py-10 ">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="py-10 bg-white">
+    <div class="max-w-7xl pb-20 mx-auto sm:px-6 lg:px-8">
         <div>Hello {{ Auth::user()->name }} !</div>
         <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="px-50 text-gray-900 dark:text-gray-100 flex items-end justify-evenly gap-x-6 py-5">

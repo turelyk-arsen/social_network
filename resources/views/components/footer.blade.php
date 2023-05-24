@@ -1,4 +1,4 @@
-<div class="bg-white px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 tails-selected-element"
+<div style class=" bg-white px-4  py-10 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 tails-selected-element "
     contenteditable="false">
     <hr style="width: 70%; margin: 40px auto ">
     <nav class="flex flex-wrap justify-center -mx-5 -my-0 ">

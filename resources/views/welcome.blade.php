@@ -36,7 +36,7 @@
 
 
     <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-sky-50 bg-[url('/images/16150556copy.jpg')] bg-cover dark:bg-dots-lighter dark:bg-gray-500 selection:bg-red-500 selection:text-white">
+        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-sky-50 bg-[url('/images/bg-w.jpg')] bg-cover dark:bg-dots-lighter dark:bg-gray-500 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                 @auth
@@ -76,12 +76,21 @@
                     <span class="relative inline-flex w-full md:w-auto">
                         <a href="{{ route('register') }}" type="button"
                             class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
-                            Join Now
+                            Join Us
                         </a>
                         <span
-                            class="absolute top-0 right-0 px-2 py-1 -mt-3 -mr-6 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">only
+                            class="absolute top-0 right-0 px-2 py-1 -mt-3 -mr-6 text-xs font-medium leading-tight text-[#fbc9f8] bg-white rounded-full">for
                             free</span>
                     </span>
+                </div>
+                <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg  ">
+                    Or get a look on
+                    latest posts <br> <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 49%; margin-top: 15px"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="place-items-center w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
+                    </svg>
                 </div>
             </div>
         </div>
@@ -89,8 +98,9 @@
 
 
     {{-- post last 3 --}}
-    <div class="bg-slate-50 py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+    <div class=" bg-[#f3f8f9]">
+        <div class="mx-auto max-w-7xl px-6 lg:px-24">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the newest posts</h2>
                 <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
@@ -147,46 +157,58 @@
         </div>
     </div>
 
-    
-    <div class="min-h-screen bg-gray-100 gap-10 flex justify-center items-center">
+
+    <div class="py-24 gap-10 flex justify-center items-center bg-[#f3f8f9]">
         @foreach ($posts as $post)
-        <div class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-          <div>
-            {{-- <span class="text-white text-xs font-bold rounded-lg bg-green-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Home</span> --}}
-            <x-tags :tagsS="$post->tags"/>
-            <h1 class="text-2xl mt-2 ml-4 line-clamp-1 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">{{ $post->title }}</h1>
-            <p class="ml-4 mt-1 mb-2 text-gray-700 line-clamp-2 hover:underline cursor-pointer">{{ $post->content }}</p>
-          </div>
-          <img class="w-full cursor-pointer" src="{{ asset('storage/'.$post->image) }}" alt="" />
-          <div class="flex p-4 justify-between">
-            <div class="flex items-center space-x-2">
-              <img class="w-10 rounded-full" src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}" alt="sara" />
-              <h2 class="text-gray-800 font-bold cursor-pointer">{{ $post->user->name }}</h2>
+            <div
+                class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                <div>
+                    {{-- <span class="text-white text-xs font-bold rounded-lg bg-green-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Home</span> --}}
+                    <x-tags :tagsS="$post->tags" />
+                    <h1
+                        class="text-2xl mt-2 ml-4 line-clamp-1 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
+                        {{ $post->title }}</h1>
+                    <p class="ml-4 mt-1 mb-2 text-gray-700 line-clamp-2 hover:underline cursor-pointer">
+                        {{ $post->content }}</p>
+                </div>
+                <img class="w-full cursor-pointer" src="{{ asset('storage/' . $post->image) }}" alt="" />
+                <div class="flex p-4 justify-between">
+                    <div class="flex items-center space-x-2">
+                        <img class="w-10 rounded-full"
+                            src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}"
+                            alt="sara" />
+                        <h2 class="text-gray-800 font-bold cursor-pointer">{{ $post->user->name }}</h2>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div class="flex space-x-1 items-center">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 cursor-pointer"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </span>
+                            <span>22</span>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span>20</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex space-x-2">
-              <div class="flex space-x-1 items-center">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                </span>
-                <span>22</span>
-              </div>
-              <div class="flex space-x-1 items-center">
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                <span>20</span>
-              </div>
-            </div>
-          </div>
-        </div>
         @endforeach
 
-      </div>
-      
+    </div>
+
     <x-footer />
 </body>
 
