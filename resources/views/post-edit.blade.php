@@ -4,7 +4,7 @@
             {{ __('Edit post :  '. $post->title ) }}
         </h2>
     </x-slot>
-
+    <x-flash />
 
     <section class="relative py-20 overflow-hidden bg-white p-10 max-w-4xl mx-auto mt-10">
         <form method="POST" action="/posts/{{ $post->id }}" enctype="multipart/form-data">

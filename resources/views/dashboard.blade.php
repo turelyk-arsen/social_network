@@ -7,7 +7,7 @@
 
     {{-- Pop up   "You're logged in!" --}}
 
-    <div class="py-12" x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show">
+    {{-- <div class="py-12" x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-emerald-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 ">
@@ -15,7 +15,27 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    {{-- @if (session('registration_success') && !session('registration_success_shown'))    @endif --}}
+        <div class="px-8 py-6 bg-green-400 text-white flex justify-between rounded" x-data="{ show: true }"
+            x-init="setTimeout(() => show = false, 3000)" x-show="show">
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                </svg>
+                <p>Success! {{ __("You're logged in!") }}</p>
+            </div>
+            <button class="text-green-100 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+    
 
     {{-- User profile --}}
     {{-- <div class="py-10 ">
@@ -210,8 +230,7 @@
                                 <div class="relative flex items-center justify-center space-x-3">
                                     <button type="button"
                                         class="rounded-md bg-indigo-600 px-5 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                        <a href="/chat/{{ $user->id }}"
-                                            class="text-black-300 hover:text-gray-100 ">
+                                        <a href="/chat/{{ $user->id }}" class="text-black-300 hover:text-gray-100 ">
                                             Chat</a></button>
                                 </div>
                             </div>

@@ -36,14 +36,18 @@
 <body>
 
     {{-- load --}}
-    <div class=" h-screen w-screen flex items-center justify-center bg-gray-100" id="loading">
-        <div class="text-lg text-gray-700">
-            <svg fill="none" class="w-10 h-10 animate-spin" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path class="text-blue-500" clip-rule="evenodd"
-                    d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z"
-                    fill="currentColor" fill-rule="evenodd" />
-            </svg>
-            <div>Loading ...</div>
+    <div id="loading">
+        <x-flash-blue />
+        <div class=" h-screen w-screen flex items-center justify-center bg-gray-100">
+            <div class="text-lg text-gray-700">
+                <svg fill="none" class="w-10 h-10 animate-spin" viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="text-blue-500" clip-rule="evenodd"
+                        d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z"
+                        fill="currentColor" fill-rule="evenodd" />
+                </svg>
+                <div>Loading ...</div>
+            </div>
         </div>
     </div>
     {{-- end --}}
@@ -69,7 +73,7 @@
             element.style.display = 'none';
             var elementAll = document.getElementById('hide');
             elementAll.style.display = 'block';
-        }, 1000);
+        }, 2000);
     </script>
 </body>
 
