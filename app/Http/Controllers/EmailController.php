@@ -27,7 +27,7 @@ class EmailController extends Controller
         $messText = $request->input('messText');
 
 
-        Mail::to('arsen.turelyk@gmail.com')->send(new WelcomeEmail($firstName, $lastName, $email, $phone, $messText));
+        Mail::to('find.your.junior.mail@gmail.com')->send(new WelcomeEmail($firstName, $lastName, $email, $phone, $messText));
 
         // return response()->json(['message' => 'Email sent successfully']);
         // return redirect('/');

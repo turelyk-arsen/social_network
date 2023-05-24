@@ -46,6 +46,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // $request->session()->put('registration_success', true);
+        // $request->session()->put('registration_success_shown', false);
+
+        return redirect(RouteServiceProvider::HOME)->with('success', 'You are logged in!');
     }
 }

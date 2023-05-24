@@ -16,7 +16,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::with('user')->latest()->get();
-        return view('post', compact('comments'));
+        return view('post', compact('comments'))->with('message', 'Comment created successfully.');
     }
 
     /**
@@ -24,7 +24,7 @@ class CommentController extends Controller
      */
     public function create(Post $post)
     {
-        return view('create-comment', ['post' => $post]);
+        return view('create-comment', ['post' => $post])->with('message', 'Comment created successfully.');
     }
 
     /**
@@ -38,7 +38,7 @@ class CommentController extends Controller
             'post_id' => 'required|exists:posts,id',
         ]);
         Comment::create($validatedData);
-        return redirect()->route('show', ['post' => $validatedData['post_id']])->with('success', 'Comment created successfully.');
+        return redirect()->route('show', ['post' => $validatedData['post_id']])->with('message', 'Comment created successfully.');
     }
     /**
      * Update the specified resource in storage.
@@ -51,7 +51,7 @@ class CommentController extends Controller
             'post_id' => 'required|exists:posts,id',
         ]);
         $comment->update($validatedData);
-        return redirect()->route('show', ['post' => $validatedData['post_id']])->with('success', 'Коментар успішно оновлено.');
+        return redirect()->route('show', ['post' => $validatedData['post_id']])->with('message', 'Comment updated successfully.');
     }
     /**
      * Display the specified resource.
@@ -66,7 +66,7 @@ class CommentController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Comment $comment) {
-        return view('comment-edit', ['comment'=>$comment]);
+        return view('comment-edit', ['comment'=>$comment])->with('message', 'Comment edit successfully.');
     }
 
 
@@ -76,6 +76,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $comment->delete();
-        return redirect()->back()->with('success', 'Your post delete successfully');
+        return redirect()->back()->with('message', 'Your comment delete successfully');
     }
 }
