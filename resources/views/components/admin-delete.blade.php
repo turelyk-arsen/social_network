@@ -5,10 +5,8 @@ use App\Models\User;
 
     <section class=" bg-white tails-selected-element ">
         <div class="container max-w-6xl mx-auto ">
-            <p style="color:  #8c84ff;" class="px-10 mb-10 mt-40 font-medium tracking-wide text-gray-400 uppercase">Open
-                the
-                post to
-                see it in details </p>
+            <p style="color:  #8c84ff;" class="px-10 mb-10 mt-0 font-medium tracking-wide text-gray-400 uppercase">
+                Management of users' profiles</p>
             <h2 style="font-family: 'Comfortaa', cursive; "
                 class="relative  px-10 mb-20 text-4xl font-semibold leading-tight lg:text-5xl uppercase ">
                 List of all users</h2>
