@@ -65,22 +65,24 @@
 
         {{-- first view --}}
         <div class="max-w-7xl mx-auto p-6 lg:p-8 ">
-            <img  class=" w-30 h-30 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
+            <img class=" w-30 h-30 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
 
             <div
                 class="container max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center tails-selected-element">
                 <h1
                     class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
-                    <span class="inline md:block">Start Chatting</span> <span
-                        class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">Next
-                        Great Idea</span>
+                    <span style="font-family: 'Comfortaa', cursive;" class="inline md:block">Start Chatting</span> <span
+                        style="font-size: 40px; font-weight: 300"
+                        class=" uppercase relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">To
+                        tell your next
+                        Great Ideas</span>
                 </h1>
                 <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Simplifying the
                     creation of landing pages, blog pages, application pages and so much more!</div>
                 <div class="flex flex-col items-center mt-6 text-center">
                     <span class="relative inline-flex w-full md:w-auto">
                         <a href="{{ route('register') }}" type="button"
-                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-400 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">
                             Join Us
                         </a>
                         <span
@@ -106,11 +108,18 @@
     {{-- post last 3 --}}
 
     <div id="posts" class=" ">
-        <div class="mx-auto max-w-7xl px-6 lg:px-24">
+        <div style="margin-left: 25%" class=" mx-auto max-w-7xl px-6 lg:px-24">
             <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sneak peek on our newest posts
+                <h2 style="font-family: 'Comfortaa', cursive;"
+                    class=" text-3xl font-bold tracking-tight text-gray-900
+                    sm:text-4xl">Sneak peek
+                    on our newest
+                    posts
                 </h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">Register to.
+                <p style="margin-left: -60px" class="text-center mt-4  text-lg leading-8 text-gray-600">Register or
+                    Login in
+                    your account to
+                    discover it all.
                 </p>
             </div>
 
@@ -165,8 +174,7 @@
     </div>
 
 
-    <div
-        class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 mx-auto lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
+    <div class="grid grid-cols-3 gap-10 mt-10 sm:grid-cols-10 mx-auto lg:grid-cols-10 sm:px-0 xl:px-32 justify-center">
         {{-- @foreach ($posts as $post)
             <div
                 class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
@@ -292,7 +300,8 @@
                    cursive; font-size: 12px; text-align: right"
                             class="  relative px-8  uppercase font-bold  ">READ MORE
                             <svg style="top: 0px; right:10" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute w-4 h-4">
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class=" absolute w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>

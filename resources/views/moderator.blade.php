@@ -6,7 +6,7 @@
     </x-slot>
 
     {{-- Pop up   "You're logged in!" --}}
-{{-- 
+    {{--
     @if (session('registration_success') && !session('registration_success_shown'))
         <div class="px-8 py-6 bg-green-400 text-white flex justify-between rounded" x-data="{ show: true }"
             x-init="setTimeout(() => show = false, 3000)" x-show="show">
@@ -26,7 +26,7 @@
         </div>
     @endif --}}
     {{-- User profile --}}
-    
+
     <x-user-profile />
 
     {{-- Moderator delete posts --}}
@@ -101,10 +101,10 @@
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                               
+
                                     <span class="absolute inset-0"></span>
                                     {{ $post->title }}
-                                
+
                             </h3>
 
                             @php
@@ -135,7 +135,7 @@
                             <form action="/posts/{{ $post->id }}/delete" method="post">
                                 @csrf
                                 @method('DELETE')
-        
+
                                 <button type="submit"
                                     class="rounded-md bg-red-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete
                                     POST</button>
