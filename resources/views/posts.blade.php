@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Posts') }}
+            {{ __('Search a topic or choose one of the articles below') }}
         </h2>
         <x-search />
 
@@ -30,14 +30,15 @@
                             </svg>
                             <span>Featured</span>
                         </div>
-                        <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">Savory Templates. Sweet
-                            Designs.</h1>
-                            {{-- button add post --}}
+                        <h1 style="font-family: 'Comfortaa', cursive;"
+                            class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">Read topics. Follow
+                            authors.</h1>
+                        {{-- button add post --}}
                         <form action="/posts/create" method="get">
                             <div class="mt-10 flex justify-end gap-x-6">
                                 <button type="submit"
-                                    class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
-                                    POST</button>
+                                    class="rounded-md bg-indigo-600 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ADD
+                                    NEW POST</button>
                             </div>
                         </form>
                     </div>
@@ -93,7 +94,7 @@
                                 <a href="/posts/{{ $post->id }}">
                                 <span class="absolute inset-0"></span>
                                 {{ $post->title }}</a>
-                                
+
                             </h3>
                             <x-tags :tagsS="$post->tags" />
 
@@ -101,7 +102,7 @@
                             <a href="/posts/{{ $post->id }}"><img src="{{ asset('storage/'.$post->image) }}"
                                     class="list-image-none rounded-lg shadow-lg shadow-gray-900/50 object-cover object-center"></a>
                                 <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $post->content }}</p>
-                            
+
                         </div>
 
                         <div class="relative mt-8 flex items-center gap-x-4">
@@ -123,7 +124,7 @@
             </div>
         </div>
     </div> --}}
-    <div class="mt-6 p-4">
+    <div style="width: 60%; margin:auto" class="mt-6 p-4">
         {{ $posts->links() }}
     </div>
 </x-app-layout>

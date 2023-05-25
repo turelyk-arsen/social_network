@@ -42,10 +42,12 @@
                 @auth
                     @if (auth()->user()->role === 'moderator')
                         <a href="{{ url('/moderator') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">Moderator's
+                            profile</a>
                     @else
                         <a href="{{ url('/dashboard') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">My
+                            profile</a>
                     @endif
                 @else
                     <a href="{{ route('login') }}"
@@ -70,40 +72,42 @@
                         class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">Next
                         Great Idea</span>
                 </h1>
-                <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Simplifying the
+                <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Simplifying the
                     creation of landing pages, blog pages, application pages and so much more!</div>
-                <div class="flex flex-col items-center mt-12 text-center">
+                <div class="flex flex-col items-center mt-6 text-center">
                     <span class="relative inline-flex w-full md:w-auto">
                         <a href="{{ route('register') }}" type="button"
-                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-400 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                             Join Us
                         </a>
                         <span
-                            class="absolute top-0 right-0 px-2 py-1 -mt-3 -mr-6 text-xs font-medium leading-tight text-[#fbc9f8] bg-white rounded-full">for
+                            class="absolute top-0 right-0 -px-4 -py-1 mt-10 -mr-12 text-xs font-medium leading-tight text-gray-600 bg-transparent rounded-full">for
                             free</span>
                     </span>
                 </div>
-                <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg  ">
-                    Or get a look on
-                    latest posts <br> <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 49%; margin-top: 15px"
-                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        class="place-items-center w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
-                    </svg>
+                <div class="mx-auto mt-12 text-gray-500 md:mt-20 md:max-w-lg md:text-center lg:text-lg  "><a
+                        href="#posts">
+                        Or get a look on
+                        latest posts <br> <svg xmlns="http://www.w3.org/2000/svg"
+                            style="margin-left: 49%; margin-top: 15px" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="place-items-center w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
+                        </svg> </a>
                 </div>
             </div>
         </div>
     </div>
 
-
+    {{-- rose [#fbc9f8] --}}
     {{-- post last 3 --}}
 
-    <div class=" bg-[#f3f8f9]">
+    <div id="posts" class=" ">
         <div class="mx-auto max-w-7xl px-6 lg:px-24">
             <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the newest posts</h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sneak peek on our newest posts
+                </h2>
+                <p class="mt-2 text-lg leading-8 text-gray-600">Register to.
                 </p>
             </div>
 
@@ -158,7 +162,8 @@
     </div>
 
 
-    <div class="py-24 gap-10 flex justify-center items-center bg-[#f3f8f9]">
+    <div style="margin:auto; padding-left: 8%"
+        class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
         @foreach ($posts as $post)
             <div
                 class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
