@@ -162,13 +162,13 @@
     </div>
 
 
-    <div style="margin:auto; padding-left: 8%"
+    <div style="margin:auto; padding-left: 8"
         class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
-        @foreach ($posts as $post)
+        {{-- @foreach ($posts as $post)
             <div
                 class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                 <div>
-                    {{-- <span class="text-white text-xs font-bold rounded-lg bg-green-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Home</span> --}}
+                    <span class="text-white text-xs font-bold rounded-lg bg-green-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Home</span>
                     <x-tags :tagsS="$post->tags" />
                     <h1
                         class="text-2xl mt-2 ml-4 line-clamp-1 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
@@ -210,8 +210,66 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @endforeach --}}
+        @foreach ($posts as $post)
+        {{-- <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
+            data-rounded="rounded-xl" data-rounded-max="rounded-full">
+            <div class="p-3 text-white bg-blue-500 rounded-full" data-primary="blue-500"
+                data-rounded="rounded-full">
+            </div>
 
+            <a href="/posts/{{ $post->id }}" class="block">
+                <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 grayscale hover:grayscale-0"
+                    src="{{ asset('storage/' . $post->image) }}">
+            </a>
+            <x-tags-posts :tagsS="$post->tags" />
+
+            <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
+            <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
+
+        </div> --}}
+
+        <div style="  color: rgb(0, 0, 0);  "
+            class="transition grid-rows-3 relative flex flex-col justify-between col-span-4  xl:col-span-3 hover:col-span-3 rounded px-10 py-8 space-y-2 overflow-hidden backdrop-blur-xl  shadow-black sm:rounded-xl "
+            data-rounded="rounded-xl" data-rounded-max="rounded-full">
+            <div class=" tflex flex-col items-start col-span-3 space-y-3 sm:col-span-3 xl:col-span-3">
+
+                <x-tags :tagsS="$post->tags" />
+
+                {{-- <a href="/posts/{{ $post->id }}" class="block"> --}}
+                    <img style="margin-right:10px"
+                        class="rounded object-cover w-full  mb-6  overflow-hidden  shadow-sm grayscale hover:grayscale-0"
+                        src="{{ asset('storage/' . $post->image) }}">
+                {{-- </a> --}}
+
+
+                <h2 style="font-family: 'Comfortaa', cursive; font-size: 22px"
+                    class=" uppercase  font-bold   line-clamp-3">
+                    {{ $post->title }}</h2>
+                <p class=" text-justify border-l-2 border-gray-500 px-5 text-sm text-gray-500 line-clamp-5">
+                    {{ $post->content }}</p>
+
+
+
+            </div>
+            <div class=" justify-end py-2 hover:underline ">
+                <a href="/register" class="block">
+                    <p style="width:100%;  font-family: 'Comfortaa' ,
+                cursive; font-size: 12px; text-align: right"
+                        class="  relative px-8  uppercase font-bold  ">READ MORE
+                        <svg style="top: 0px; right:10" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class=" absolute w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+
+                    </p>
+                </a>
+
+            </div>
+        </div>
+    @endforeach
     </div>
 
     <x-footer />
