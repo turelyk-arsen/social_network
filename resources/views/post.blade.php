@@ -1,18 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Post') }}
+            {{ __('Post details') }}
         </h2>
         {{-- <x-search /> --}}
 
     </x-slot>
     <x-flash />
 
-    <div class="bg-slate-50 py-24 sm:py-32">
+    <div class="bg-slate-50 py-24 sm:py-0">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-4xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">One post</h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.
+
                 </p>
 
                 {{-- @if (Auth::user()->id == $post->user_id || Auth::user()->name == 'moderator')
@@ -141,7 +140,7 @@
                 <div class="absolute left-0 bottom-0 w-full h-full z-10"
                     style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                 <img src="{{ asset('storage/' . $post->image) }}"
-                    class="absolute left-0 top-0 w-full h-full z-0 object-cover" />
+                    class="absolute rounded-xl left-0 top-0 w-full h-full z-0 object-cover" />
                 <div class="p-4 absolute bottom-0 left-0 z-20">
                     @php
                         $tags = explode(', ', $post->tags);
@@ -200,7 +199,7 @@
         @endif
     </div>
 
-    <section class="relative flex items-center justify-center py-10 antialiased  bg-slate-50 min-w-screen">
+    <section class="relative flex items-center justify-center py-10 antialiased   min-w-screen">
         <div class="container px-0 mx-auto sm:px-5">
 
             {{-- <div
@@ -262,9 +261,12 @@
                 </div>
             </div>
         </div> --}}
-            <h3 class="mt-3 text-3xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            <hr>
+            <h3 style="font-family: 'Comfortaa', cursive;"
+                class="mt-20 mb-16 pl-60 text-3xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                 Comments
             </h3>
+
 
             @foreach ($comments as $comment)
                 <div
@@ -322,7 +324,7 @@
             <form action="/posts/{{ $post->id }}/comment" method="get">
                 @csrf
                 <button type="submit"
-                    class="rounded-md bg-indigo-600 mt-10 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
+                    class="rounded-md bg-indigo-600  ml-60 mt-10 px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
                     Comment</button>
             </form>
         </div>
