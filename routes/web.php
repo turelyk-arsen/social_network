@@ -54,6 +54,10 @@ Route::post('/send-email', [EmailController::class, 'sendEmail']);
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('show');
 // Route::post('/posts/{post}', [CommentController::class, 'index']);
 
+Route::post('/posts/{post}/like', [PostController::class, 'like']);
+Route::post('/posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
+
+
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy']);
 Route::delete('/posts/{post}/delete/delete', [PostController::class, 'des']);

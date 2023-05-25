@@ -4,6 +4,7 @@
             {{ __('Search a topic or choose one of the articles below') }}
         </h2>
         <x-search />
+        {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
 
     </x-slot>
 
@@ -58,6 +59,39 @@
                         <h2 class="text-lg font-bold sm:text-xl md:text-2xl line-clamp-2">{{ $post->title }}</h2>
                         <p class="text-sm text-gray-500 line-clamp-5">{{ $post->content }}</p>
 
+                        {{-- <p>Likes: {{ $post->likes->where('type', 'like')->count() }}</p>
+                        <p>Dislikes: {{ $post->likes->where('type', 'dislike')->count() }}</p> --}}
+                        <div class="flex gap-3">
+
+                            <form action="/posts/{{ $post->id }}/like" method="POST">
+                                @csrf
+                                <button class="inline-flex items-center px-1 -ml-1 flex-column" type="submit">
+                                    {{-- <svg class="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-700" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5">
+                                        </path>
+                                    </svg> --}}
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <span class="like-count">{{ $post->likes->where('type', 'like')->count() }}</span>
+                                </button>
+                            </form>
+
+                            <form action="/posts/{{ $post->id }}/dislike" method="POST">
+                                @csrf
+                                <button class="inline-flex items-center px-1 -ml-1 flex-column" type="submit">
+                                    {{-- <svg class="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-700 " fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5">
+                                        </path>
+                                    </svg> --}}
+                                    <i class="fa-regular fa-thumbs-up fa-flip-vertical"></i>
+                                    <span
+                                        class="dislike-count">{{ $post->likes->where('type', 'dislike')->count() }}</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -127,4 +161,5 @@
     <div style="width: 60%; margin:auto" class="mt-6 p-4">
         {{ $posts->links() }}
     </div>
+
 </x-app-layout>

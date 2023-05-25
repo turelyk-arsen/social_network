@@ -43,4 +43,24 @@ class Post extends Model
                 ->orWhere('tags', 'like', '%' . request('search') . '%');
         }
     }
+    public function likes()
+{
+    return $this->hasMany(Like::class);
+}
+
+public function likedByUser($user)
+{
+    return $this->likes()->where('user_id', $user->id)->exists();
+}
+
+public function likeCount()
+{
+    return $this->likes()->where('type', 'like')->count();
+}
+
+public function dislikeCount()
+{
+    return $this->likes()->where('type', 'dislike')->count();
+}
+
 }

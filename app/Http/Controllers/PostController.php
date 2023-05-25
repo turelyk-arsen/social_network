@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
@@ -152,5 +153,43 @@ class PostController extends Controller
     public function des (Post $post) {
         $post->delete();
         return redirect('/moderator')->with('message','Your post delete successfully');
+    }
+
+    public function like(Post $post)
+    {
+        $user = auth()->user();
+        
+        $like = Like::firstOrNew([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        if ($like->exists) {
+            $like->delete();
+        } else {
+            $like->type = 'like';
+            $like->save();
+        }
+        
+        return redirect('/posts');
+    }
+
+    public function dislike(Post $post)
+    {
+        $user = auth()->user();
+        
+        $dislike = Like::firstOrNew([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        if ($dislike->exists) {
+            $dislike->delete();
+        } else {
+            $dislike->type = 'dislike';
+            $dislike->save();
+        }
+        
+        return back();
     }
 }
