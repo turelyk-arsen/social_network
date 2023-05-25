@@ -7,7 +7,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <img  class="w-20 h-20 " src="{{ asset('images/logo.svg') }}" alt="">
+                    <img  class="w-20 h-20 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
 
                     @auth
                         @if (auth()->user()->role === 'moderator')

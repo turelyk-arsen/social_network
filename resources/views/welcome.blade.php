@@ -37,6 +37,7 @@
 
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-sky-50 bg-[url('/images/bg-w.jpg')] bg-cover dark:bg-dots-lighter dark:bg-gray-500 selection:bg-red-500 selection:text-white">
+
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                 @auth
@@ -64,6 +65,8 @@
 
         {{-- first view --}}
         <div class="max-w-7xl mx-auto p-6 lg:p-8 ">
+            <img  class=" w-30 h-30 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
+
             <div
                 class="container max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center tails-selected-element">
                 <h1
@@ -162,8 +165,8 @@
     </div>
 
 
-    <div style="margin:auto; padding-left: 8"
-        class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
+    <div
+        class="grid grid-cols-3 gap-8 mt-10 sm:grid-cols-10 mx-auto lg:grid-cols-10 sm:px-0 xl:px-0 justify-center">
         {{-- @foreach ($posts as $post)
             <div
                 class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
@@ -212,7 +215,7 @@
             </div>
         @endforeach --}}
         @foreach ($posts as $post)
-        {{-- <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
+            {{-- <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl"
             data-rounded="rounded-xl" data-rounded-max="rounded-full">
             <div class="p-3 text-white bg-blue-500 rounded-full" data-primary="blue-500"
                 data-rounded="rounded-full">
@@ -229,47 +232,78 @@
 
         </div> --}}
 
-        <div style="  color: rgb(0, 0, 0);  "
-            class="transition grid-rows-3 relative flex flex-col justify-between col-span-4  xl:col-span-3 hover:col-span-3 rounded px-10 py-8 space-y-2 overflow-hidden backdrop-blur-xl  shadow-black sm:rounded-xl "
-            data-rounded="rounded-xl" data-rounded-max="rounded-full">
-            <div class=" tflex flex-col items-start col-span-3 space-y-3 sm:col-span-3 xl:col-span-3">
+            <div style="  color: rgb(0, 0, 0);  "
+                class="transition grid-rows-3 relative flex flex-col justify-between col-span-4  xl:col-span-3 hover:col-span-3 rounded px-10 py-8 space-y-2 overflow-hidden backdrop-blur-xl  shadow-black sm:rounded-xl "
+                data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class=" tflex flex-col items-start col-span-3 space-y-3 sm:col-span-3 xl:col-span-3">
 
-                <x-tags :tagsS="$post->tags" />
+                    <x-tags :tagsS="$post->tags" />
 
-                {{-- <a href="/posts/{{ $post->id }}" class="block"> --}}
+                    {{-- <a href="/posts/{{ $post->id }}" class="block"> --}}
                     <img style="margin-right:10px"
                         class="rounded object-cover w-full  mb-6  overflow-hidden  shadow-sm grayscale hover:grayscale-0"
                         src="{{ asset('storage/' . $post->image) }}">
-                {{-- </a> --}}
+                    {{-- </a> --}}
+                    <div class="flex p-4 justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img class="w-10 rounded-full"
+                                src="{{ $post->user->photo ? asset('storage/' . $post->user->photo) : asset('images/No_image_available.svg.png') }}"
+                                alt="sara" />
+                            <h2 class="text-gray-800 font-bold cursor-pointer">{{ $post->user->name }}</h2>
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="flex space-x-1 items-center">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 cursor-pointer"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                    </svg>
+                                </span>
+                                <span>22</span>
+                            </div>
+                            <div class="flex space-x-1 items-center">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span>20</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 style="font-family: 'Comfortaa', cursive; font-size: 22px"
+                        class=" uppercase  font-bold   line-clamp-3">
+                        {{ $post->title }}</h2>
+                    <p class=" text-justify border-l-2 border-gray-500 px-5 text-sm text-gray-500 line-clamp-5">
+                        {{ $post->content }}</p>
 
 
-                <h2 style="font-family: 'Comfortaa', cursive; font-size: 22px"
-                    class=" uppercase  font-bold   line-clamp-3">
-                    {{ $post->title }}</h2>
-                <p class=" text-justify border-l-2 border-gray-500 px-5 text-sm text-gray-500 line-clamp-5">
-                    {{ $post->content }}</p>
 
+                </div>
+                <div class=" justify-end py-2 hover:underline ">
+                    <a href="/register" class="block">
+                        <p style="width:100%;  font-family: 'Comfortaa' ,
+                   cursive; font-size: 12px; text-align: right"
+                            class="  relative px-8  uppercase font-bold  ">READ MORE
+                            <svg style="top: 0px; right:10" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" absolute w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
 
+                        </p>
+                    </a>
+
+                </div>
 
             </div>
-            <div class=" justify-end py-2 hover:underline ">
-                <a href="/register" class="block">
-                    <p style="width:100%;  font-family: 'Comfortaa' ,
-                cursive; font-size: 12px; text-align: right"
-                        class="  relative px-8  uppercase font-bold  ">READ MORE
-                        <svg style="top: 0px; right:10" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            class=" absolute w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                        </svg>
-
-                    </p>
-                </a>
-
-            </div>
-        </div>
-    @endforeach
+        @endforeach
     </div>
 
     <x-footer />
