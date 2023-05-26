@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit post :  '. $post->title ) }}
+            {{ __('Edit post :  ' . $post->title) }}
         </h2>
     </x-slot>
     <x-flash />
@@ -12,9 +12,9 @@
             @method('PUT')
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be
-                        careful what you share.</p>
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">New idea?</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">You can change the details of the current post in the
+                        form below.</p>
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
@@ -25,7 +25,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="title" id="title" autocomplete="title"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                         value="{{ $post->title }}">
+                                        value="{{ $post->title }}">
 
                                 </div>
                                 @error('title')
@@ -97,7 +97,7 @@
 
                         <div class="col-span-full">
                             <img src="{{ asset('storage/' . $post->image) }}" alt=""
-                                    class="list-image-none rounded-lg mb-2 shadow-lg shadow-gray-900/50 object-cover object-center">
+                                class="list-image-none rounded-lg mb-2 shadow-lg shadow-gray-900/50 object-cover object-center">
                             <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Add
                                 photo</label>
                             <div
@@ -116,14 +116,14 @@
                                             <input id="image" name="image" type="file" class="sr-only">
                                         </label>
                                     </div>
-                                    
+
                                     @error('image')
-                                    <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
-                                @enderror
+                                        <p class='text-red-500 text-xs mt-1'> {{ $message }}</p>
+                                    @enderror
                                 </div>
-                                
+
                             </div>
-                        </div> 
+                        </div>
 
                         {{-- <div class="mb-6">
                             <label for="image" class="inline-block text-lg mb-2">

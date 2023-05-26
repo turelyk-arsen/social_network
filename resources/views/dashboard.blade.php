@@ -63,7 +63,7 @@
         </div> --}}
     <x-user-profile class="bg-white" />
 
-    <div style="position: relative; top: -280px; left: 25%" class="text-gray-400">
+    <div style="position: relative; top: -280px; left: 16.4%" class="text-gray-400">
         @if ($hasNewMessages)
             <div style="font-family: 'Comfortaa', cursive;" class="new-messages ">
                 <p>You have {{ $newMessagesCount }} new messages in the chat.</p>
@@ -164,7 +164,9 @@
         class="  px-16  bg-white tails-selected-element bg-gradient-to-r from-bg-white justify-center">
         <div style="margin:auto;" class="container max-9-xl mx-auto justify-center  ">
 
-            <p class="ml-40 font-medium tracking-wide text-gray-400 uppercase">Open the post to see it in details </p>
+            <p style="color:  #8c84ff;" class="ml-40 mt-40 font-medium tracking-wide text-gray-400 uppercase">Open the
+                post to
+                see it in details </p>
             <h2 style="font-family: 'Comfortaa', cursive;"
                 class="relative max-w-lg mt-8 mb-10 text-4xl font-semibold leading-tight lg:text-5xl uppercase ml-40">
                 My
