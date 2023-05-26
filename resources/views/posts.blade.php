@@ -22,7 +22,7 @@
                     <div
                         class="flex flex-col items-start justify-center h-full space-y-3 transform md:pl-10 lg:pl-16 md:space-y-5">
                         <div
-                            class="bg-pink-500 flex items-center pl-2 pr-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white inline-block">
+                            class="bg-pink-500 flex items-center pl-2 pr-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white">
                             <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -47,7 +47,7 @@
             </div>
 
             {{-- Card of all POSTS --}}
-            <div class="flex grid grid-cols-12 pb-10 sm:px-5 gap-x-8 gap-y-16">
+            <div class="grid grid-cols-12 pb-10 sm:px-5 gap-x-8 gap-y-16">
                 @foreach ($posts as $post)
                     <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
                         <a href="/posts/{{ $post->id }}" class="block">

@@ -253,7 +253,7 @@
             <div class="relative px-16 mx-auto max-w-7xl">
                 <p class="font-medium tracking-wide text-gray-400 uppercase">visit your friends profile</p>
                 <h2 style="font-family: 'Comfortaa', cursive;"
-                    class="relative max-w-lg mt-5 mb-20 text-4xl font-semibold leading-tight lg:text-5xl uppercase mt-8 ">
+                    class="relative max-w-lg mt-5 mb-20 text-4xl font-semibold leading-tight lg:text-5xl uppercase">
                     My
                     friends</h2>
                 <div class="shrink-0 grid w-full grid-cols-2 gap-20 sm:grid-cols-3 lg:grid-cols-2 ">

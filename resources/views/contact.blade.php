@@ -65,7 +65,7 @@
                             class="mt-5 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
 
                             <textarea placeholder="Message*" name="messText"
-                                class=" w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline  border-0 bg-transparent  text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
+                                class=" w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline  border-0 bg-transparent placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
                             @error('messText')
                                 <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
                             @enderror
@@ -97,7 +97,7 @@
                     </div>
                     <div style="text-align:center;" class="justify-items-center justify-center flex my-4 w-1/4">
                         <div class="flex flex-col justify-center justify-items-center ">
-                            <i class="fas fa-map-marker-alt pt-10 pr-2" />
+                            <i class="fas fa-map-marker-alt pt-10 pr-2"></i>
                         </div>
                         <div style="text-align:center; " class="flex flex-col justify-center justify-items-center">
                             <h2 class="text-2xl">Main Office</h2>
@@ -107,7 +107,7 @@
 
                     <div style="text-align:center;" class="flex flex-col">
                         <div class="flex flex-col">
-                            <i class="fas fa-phone-alt pt-2 pr-2" />
+                            <i class="fas fa-phone-alt pt-2 pr-2"></i>
                         </div>
                         <div class="flex flex-col ">
                             <h2 class="text-2xl">Call Us</h2>
