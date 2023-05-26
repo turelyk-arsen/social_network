@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=DM+Sans&display=swap" rel="stylesheet">
+
     <link rel="icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -71,24 +75,20 @@
                 class="container max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center tails-selected-element">
                 <h1
                     class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
-                    <span style="font-family: 'Comfortaa', cursive;" class="inline md:block">Start Chatting</span> <span
-                        style="font-size: 40px; font-weight: 300"
+                    <span style="font-family: 'Comfortaa', cursive;" class=" inline md:block">Chat it up, Share it out !</span> <span
+                        style="font-size: 30px; font-weight: 600"
                         class=" uppercase relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">To
                         tell your next
                         Great Ideas</span>
                 </h1>
-                <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Simplifying the
-                    creation of landing pages, blog pages, application pages and so much more!</div>
+                <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Connect, share & interact with one another effortessly, fostering a sense of community and enabling the exchange of ideas and experience in real-time ! </div>
                 <div class="flex flex-col items-center mt-6 text-center">
                     <span class="relative inline-flex w-full md:w-auto">
                         <a href="{{ route('register') }}" type="button"
                             class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">
                             Join Us
                         </a>
-                        <span
-                            class="absolute top-0 right-0 -px-4 -py-1 mt-10 -mr-12 text-xs font-medium leading-tight text-gray-600 bg-transparent rounded-full">for
-                            free</span>
-                    </span>
+                        
                 </div>
                 <div class="mx-auto mt-12 text-gray-500 md:mt-20 md:max-w-lg md:text-center lg:text-lg  "><a
                         href="#posts">
@@ -111,9 +111,8 @@
         <div style="margin-left: 25%" class=" mx-auto max-w-7xl px-6 lg:px-24">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 style="font-family: 'Comfortaa', cursive;"
-                    class=" text-3xl font-bold tracking-tight text-gray-900
-                    sm:text-4xl">Sneak peek
-                    on our newest
+                    class="uppercase text-3xl font-bold tracking-tight text-gray-900
+                    sm:text-4xl">our newest
                     posts
                 </h2>
                 <p style="margin-left: -60px" class="text-center mt-4  text-lg leading-8 text-gray-600">Register or
