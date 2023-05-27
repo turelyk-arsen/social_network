@@ -12,8 +12,9 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=DM+Sans&display=swap"
+        rel="stylesheet">
 
     <link rel="icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -32,90 +33,97 @@
             },
         };
     </script>
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
 </head>
 
 <body class="antialiased">
 
+    <div class="bg-[url('/images/2908983.jpg')] bg-cover ">
+        <div class="sm:flex sm:justify-center kenburns-right sm:items-center min-h-screen selection:bg-red-500 selection:text-white">
 
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-sky-50 bg-[url('/images/bg-w.jpg')] bg-cover dark:bg-dots-lighter dark:bg-gray-500 selection:bg-red-500 selection:text-white">
 
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                @auth
-                    @if (auth()->user()->role === 'moderator')
-                        <a href="{{ url('/moderator') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">Moderator's
-                            profile</a>
+            @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    @auth
+                    <a href="{{ url('/dashboard') }}"
+                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">My
+                    profile</a>
+                        {{-- @if (auth()->user()->role === 'moderator')
+                            <a href="{{ url('/moderator') }}"
+                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">Moderator's
+                                profile</a>
+                        @else
+                            <a href="{{ url('/dashboard') }}"
+                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">My
+                                profile</a>
+                        @endif --}}
                     @else
-                        <a href="{{ url('/dashboard') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 uppercase focus:rounded-sm focus:outline-red-500">My
-                            profile</a>
-                    @endif
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                        in</a>
+                        <a href="{{ route('login') }}"
+                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                            in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-        {{-- first view --}}
-        <div class="max-w-7xl mx-auto p-6 lg:p-8 ">
-            <img class=" w-30 h-30 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
-
-            <div
-                class="container max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center tails-selected-element">
-                <h1
-                    class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
-                    <span style="font-family: 'Comfortaa', cursive;" class=" inline md:block">Chat it up, Share it out !</span> <span
-                        style="font-size: 30px; font-weight: 600"
-                        class=" uppercase relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">To
-                        tell your next
-                        Great Ideas</span>
-                </h1>
-                <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Connect, share & interact with one another effortessly, fostering a sense of community and enabling the exchange of ideas and experience in real-time ! </div>
-                <div class="flex flex-col items-center mt-6 text-center">
-                    <span class="relative inline-flex w-full md:w-auto">
-                        <a href="{{ route('register') }}" type="button"
-                            class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">
-                            Join Us
-                        </a> 
-                    </span>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                                class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        @endif
+                    @endauth
                 </div>
-                <div class="mx-auto mt-12 text-gray-500 md:mt-20 md:max-w-lg md:text-center lg:text-lg  "><a
-                        href="#posts">
-                        Or get a look on
-                        latest posts <br> <svg xmlns="http://www.w3.org/2000/svg"
-                            style="margin-left: 49%; margin-top: 15px" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="place-items-center w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
-                        </svg> </a>
+            @endif
+
+            {{-- first view --}}
+            <div class="max-w-7xl mx-auto p-6 lg:p-8 ">
+
+                <div
+                    class="container max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center tails-selected-element">
+                    <h1
+                        class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
+                        <span style="font-family: 'Comfortaa', cursive;" class=" inline md:block">Chat it up, Share it
+                            out
+                            !</span> <span style="font-size: 30px; font-weight: 600"
+                            class=" uppercase relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">To
+                            tell your next
+                            Great Ideas</span>
+                    </h1>
+                    <div class="mx-auto mt-2 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Connect,
+                        share &
+                        interact with one another effortessly, fostering a sense of community and enabling the exchange
+                        of
+                        ideas and experience in real-time ! </div>
+                    <div class="flex flex-col items-center mt-6 text-center">
+                        <span class="relative inline-flex w-full md:w-auto">
+                            <a href="{{ route('register') }}" type="button"
+                                class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">
+                                Join Us
+                            </a>
+                        </span>
+                    </div>
+                    <div class="mx-auto mt-12 text-gray-500 md:mt-20 md:max-w-lg md:text-center lg:text-lg  "><a
+                            href="#posts">
+                            Or get a look on
+                            latest posts <br> <svg xmlns="http://www.w3.org/2000/svg"
+                                style="margin-left: 49%; margin-top: 15px" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="place-items-center w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
+                            </svg> </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- rose [#fbc9f8] --}}
     {{-- post last 3 --}}
+    <img src="{{ asset('images/1_1.png') }}">
 
-    <div id="posts" class=" ">
-        <div style="margin-left: 25%" class=" mx-auto max-w-7xl px-6 lg:px-24">
+    <div id="posts">
+        <div class=" mx-auto max-w-7xl px-6 lg:px-24">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 style="font-family: 'Comfortaa', cursive;"
-                    class="uppercase text-3xl font-bold tracking-tight text-gray-900
-                    sm:text-4xl">our newest
+                    class="uppercase text-right text-3xl font-bold tracking-tight text-gray-900
+                    sm:text-4xl">
+                    our newest
                     posts
                 </h2>
-                <p style="margin-left: -60px" class="text-center mt-4  text-lg leading-8 text-gray-600">Register or
+                <p class="text-right mt-4 text-lg leading-8 text-gray-600">Register or
                     Login in
                     your account to
                     discover it all.

@@ -25,6 +25,7 @@ class ChuckNorrisController extends Controller
 
         $user = Auth::user();
         $posts = Post::where('user_id', $user->id)->get();
+        $postAll = Post::with('user')->latest()->simplePaginate(6);
         $users = User::all();
 
         // $from_user_id = auth()->user();
@@ -47,6 +48,6 @@ class ChuckNorrisController extends Controller
 
         $newMessagesCount = Message::where('to_user_id', $user->id)->where('is_read', false)->count();
         
-        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts, 'users' => $users, 'hasNewMessages' => $hasNewMessages, 'newMessagesCount' => $newMessagesCount]);
+        return view('dashboard', ['joke' => $joke['value'], 'posts' => $posts, 'postAll' => $postAll, 'users' => $users, 'hasNewMessages' => $hasNewMessages, 'newMessagesCount' => $newMessagesCount]);
     }
 }

@@ -18,18 +18,18 @@ use App\Http\Controllers\ChuckNorrisController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [PostController::class, 'home'])->name('home');
 
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/', [PostController::class, 'home']);
 
 Route::get('/dashboard', [ChuckNorrisController::class, 'getRandomJoke'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/moderator', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('moderator');
+// Route::get('/moderator', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('moderator');
 Route::get('/posts', [PostController::class, 'indexAll'])->middleware(['auth', 'verified'])->name('posts');
 
 Route::middleware('auth')->group(function () {

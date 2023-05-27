@@ -45,6 +45,6 @@
     </nav>
 
     <p class="mt-8  uppercase text-xs leading-6 text-center text-indigo-400 not-italic">
-        © 2023 PopisdIN. All rights reserved.
+        © 2023 Arsen Turelyk. All rights reserved.
     </p>
 </div>

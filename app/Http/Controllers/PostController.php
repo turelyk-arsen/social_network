@@ -152,7 +152,7 @@ class PostController extends Controller
 
     public function des (Post $post) {
         $post->delete();
-        return redirect('/moderator')->with('message','Your post delete successfully');
+        return redirect('/dashboard')->with('message','Your post delete successfully');
     }
 
     public function like(Post $post)

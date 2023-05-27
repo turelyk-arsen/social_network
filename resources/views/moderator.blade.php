@@ -65,7 +65,7 @@
 
 
             {{-- Card of all POSTS --}}
-            <div class="flex grid grid-cols-12 pb-10 sm:px-5 gap-x-8 gap-y-16">
+            <div class=" grid grid-cols-12 pb-10 sm:px-5 gap-x-8 gap-y-16">
                 @foreach ($posts as $post)
                     <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
                         <a href="/posts/{{ $post->id }}" class="block">

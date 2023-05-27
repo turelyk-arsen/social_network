@@ -7,9 +7,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <img  class="w-20 h-20 " src="{{ asset('images/logo_v2_pu.svg') }}" alt="">
+                    <img class="w-11 h-11 " src="{{ asset('images/2.png') }}" alt="">
 
-                    @auth
+                    {{-- @auth
                         @if (auth()->user()->role === 'moderator')
                             <a href="{{ route('moderator') }}">
                                 <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
@@ -19,40 +19,36 @@
                                 <x-application-logo
                                     class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                             </a>
+
                         @endif
-                    @endauth
+                    @endauth --}}
 
 
                     {{-- <a href="{{ route('dashboard') }}">
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a> --}}
                 </div>
-
-                <!-- Navigation Links -->
-                <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
-                    {{ __('Home') }}
-                </x-dropdown-link>
-
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @if (auth()->user()->role === 'moderator')
-                        <x-nav-link :href="route('moderator')" :active="request()->routeIs('moderator')">
-                            {{ __('Profile') }}
-                        </x-nav-link>
-                    @else
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Profile') }}
-                        </x-nav-link>
-                    @endif
 
-                    {{-- <x-dropdown-link :href="route('chat.1')" :active="request()->routeIs('chat')">
-                        {{ __('Chat') }}
-                    </x-dropdown-link> --}}
+                    <x-dropdown-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Welcome') }}
+                    </x-dropdown-link>
+
+                    <!-- Navigation Links -->
+                    <x-dropdown-link :href="route('posts')" :active="request()->routeIs('posts')">
+                        {{ __('Home') }}
+                    </x-dropdown-link>
+
                     @php
                         $user = Auth::user();
                     @endphp
                     <x-dropdown-link :href="route('chat', ['userId' => $user->id])" :active="request()->routeIs('chat')">
                         {{ __('Chat') }}
                     </x-dropdown-link>
+
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Profile') }}
+                    </x-nav-link>
 
                     <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Edit profile') }}

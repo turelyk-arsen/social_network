@@ -73,7 +73,7 @@
                     <div class="w-1/3  flex flex-col">
                         <!-- Header -->
                         <div style=" border-top-left-radius: 20px; background-color: #8c84ff; border-bottom: 3px solid #8c84ff "
-                            class=" py-2 px-3 bg-gray-200 flex flex-row justify-between items-center ">
+                            class="py-2 px-3 bg-gray-200 flex flex-row justify-between items-center ">
                             <div>
                                 <img class="w-10 h-10 rounded-full"
                                     src="{{ $to_user_id->photo ? asset('storage/' . $to_user_id->photo) : asset('images/No_image_available.svg.png') }}" />
